@@ -61,13 +61,156 @@ String formatDate(String dateString) {
   return '$day\n$monthYear';
 }
 
+// class DynamicListScreennew extends StatefulWidget {
+//   @override
+//   DynamicListScreennewState createState() => DynamicListScreennewState();
+// }
+
+// class DynamicListScreennewState extends State<DynamicListScreennew> {
+//   EditPackageScreenContract _view;
+//   final Dio dio = Dio();
+//   final ScrollController _scrollController = ScrollController();
+//   List<dynamic> _deliveryList = [];
+//   bool _isLoading = false;
+//   int _page = 1; // Start with page 1
+
+//   Future<List<dynamic>> fetchData(int page) async {
+//     BaseOptions options = BaseOptions(
+//       baseUrl: 'https://dashlogistics.dev/api/v1/employee/statusData',
+//       connectTimeout: Duration(milliseconds: 30000),
+//       receiveTimeout: Duration(milliseconds: 30000),
+//       validateStatus: (status) => status < 500,
+//     );
+
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+//     final String token = prefs.getString('token') ?? '';
+
+//     dio.options.headers["Authorization"] = "Bearer $token";
+
+//     try {
+//       final response = await dio.get(
+//         'https://dashlogistics.dev/api/v1/employee/statusData',
+//         //queryParameters: {'page': page}, // Pass the page number
+//          queryParameters: {'status': 'rescheduled', 'page': page}, // Added status parameter
+        
+//       );
+
+//       if (response.statusCode == 200) {
+//         return response.data['data']; // Return the 'data' array
+//       }
+  
+//       else {
+//         _view.onError("Something Went Wrong");
+//       }
+//     } catch (e) {
+//       _view.onError("Something Went Wrong");
+//     }
+//   }
+//   Future<void> _clearCache() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   prefs.remove('cachedRescheduleList'); // Clear cache
+//   print("Cache cleared for testing.");
+// }
+
+//   @override
+//   void initState() {
+//     super.initState();
+//        _loadInitialData();
+  
+
+//     _scrollController.addListener(() {
+//       print("5st***************");
+     
+//       if (_scrollController.position.pixels >=
+//               _scrollController.position.maxScrollExtent - 50 &&
+//           !_isLoading) {
+//         print("1st***************");
+//          _loadMoreData();
+//       }
+//     });
+//   }
+//   Future<void> _loadInitialData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   String cachedData = prefs.getString('cachedRescheduleList');
+  
+//   if (cachedData != null && cachedData.isNotEmpty) {
+//     // await _loadMoreData();
+//     print("Cache data is present *************");
+//     setState(() {
+//       _deliveryList = List<dynamic>.from(json.decode(cachedData));
+//     });
+//   } else {
+//     print("No cache data is present *************");
+//     await _loadMoreData(); // Load from server if no cached data
+//   }
+// }
+
+
+
+//   Future<void> _cacheData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setString('cachedRescheduleList', json.encode(_deliveryList));
+//   print("Data cached successfully.");
+// }
+
+// Future<void> _loadMoreData() async {
+//   if (_isLoading) return; // Prevent multiple calls
+
+//   setState(() => _isLoading = true);
+
+//   try {
+//     List<dynamic> newData = await fetchData(_page);
+
+//     if (newData.isNotEmpty) {
+//       setState(() {
+//         _deliveryList.addAll(newData);
+//         _page++;
+//       });
+
+//       // Cache the updated data
+//       await _cacheData();
+//     } else {
+//       print("No more data available."); // No further API calls
+//     }
+//   } catch (e) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//      SnackBar(
+//   content: Text("Session Expired. Please log in again"),
+//   duration: Duration(seconds: 3), // Set duration here
+// )
+//     );
+//   } finally {
+//     setState(() => _isLoading = false);
+//   }
+// }
+
+
+//   // Function to fetch new data
+// Future<void> _loadNewData() async {
+//   setState(() => _isLoading = true); // Show loading indicator
+//   try {
+//     _page = 1; // Reset to first page
+//     List<dynamic> newData = await fetchData(_page);
+//     setState(() {
+//       _deliveryList = newData; // Replace current data with new data
+//     });
+//   } catch (e) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(content: Text("Error refreshing data: $e")),
+//     );
+//   } finally {
+//     setState(() => _isLoading = false); // Hide loading indicator
+//   }
+// }
+
+
+
 class DynamicListScreennew extends StatefulWidget {
   @override
   DynamicListScreennewState createState() => DynamicListScreennewState();
 }
 
 class DynamicListScreennewState extends State<DynamicListScreennew> {
-  EditPackageScreenContract _view;
   final Dio dio = Dio();
   final ScrollController _scrollController = ScrollController();
   List<dynamic> _deliveryList = [];
@@ -90,119 +233,89 @@ class DynamicListScreennewState extends State<DynamicListScreennew> {
     try {
       final response = await dio.get(
         'https://dashlogistics.dev/api/v1/employee/statusData',
-        //queryParameters: {'page': page}, // Pass the page number
-         queryParameters: {'status': 'rescheduled', 'page': page}, // Added status parameter
-        
+        queryParameters: {'status': 'rescheduled', 'page': page},
       );
 
       if (response.statusCode == 200) {
-        return response.data['data']; // Return the 'data' array
-      }
-  
-      else {
-        _view.onError("Something Went Wrong");
+        return response.data['data'];
+      } else {
+        throw Exception("Failed to load data");
       }
     } catch (e) {
-      _view.onError("Something Went Wrong");
+      throw Exception("Error fetching data: $e");
     }
   }
-  Future<void> _clearCache() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('cachedRescheduleList'); // Clear cache
-  print("Cache cleared for testing.");
-}
 
   @override
   void initState() {
     super.initState();
-       _loadInitialData();
-  
+    _loadInitialData();
 
     _scrollController.addListener(() {
-      print("5st***************");
-     
       if (_scrollController.position.pixels >=
               _scrollController.position.maxScrollExtent - 50 &&
           !_isLoading) {
-        print("1st***************");
-         _loadMoreData();
+        _loadMoreData();
       }
     });
   }
+
   Future<void> _loadInitialData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String cachedData = prefs.getString('cachedRescheduleList');
-  
-  if (cachedData != null && cachedData.isNotEmpty) {
-    // await _loadMoreData();
-    print("Cache data is present *************");
     setState(() {
-      _deliveryList = List<dynamic>.from(json.decode(cachedData));
+      _deliveryList.clear(); // Clear existing data
     });
-  } else {
-    print("No cache data is present *************");
-    await _loadMoreData(); // Load from server if no cached data
+    await _loadMoreData(); // Fetch fresh data
   }
-}
 
+  Future<void> _loadMoreData() async {
+    if (_isLoading) return; // Prevent multiple calls
 
+    setState(() => _isLoading = true);
 
-  Future<void> _cacheData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.setString('cachedRescheduleList', json.encode(_deliveryList));
-  print("Data cached successfully.");
-}
+    try {
+      List<dynamic> newData = await fetchData(_page);
 
-Future<void> _loadMoreData() async {
-  if (_isLoading) return; // Prevent multiple calls
-
-  setState(() => _isLoading = true);
-
-  try {
-    List<dynamic> newData = await fetchData(_page);
-
-    if (newData.isNotEmpty) {
-      setState(() {
-        _deliveryList.addAll(newData);
-        _page++;
-      });
-
-      // Cache the updated data
-      await _cacheData();
-    } else {
-      print("No more data available."); // No further API calls
+      if (newData.isNotEmpty) {
+        setState(() {
+          _deliveryList.addAll(newData);
+          _page++;
+        });
+      } else {
+        print("No more data available.");
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error loading data: $e")),
+      );
+    } finally {
+      setState(() => _isLoading = false);
     }
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-     SnackBar(
-  content: Text("Session Expired. Please log in again"),
-  duration: Duration(seconds: 3), // Set duration here
-)
-    );
-  } finally {
-    setState(() => _isLoading = false);
   }
-}
 
+  Future<void> _loadNewData() async {
+    setState(() => _isLoading = true); // Show loading indicator
 
-  // Function to fetch new data
-Future<void> _loadNewData() async {
-  setState(() => _isLoading = true); // Show loading indicator
-  try {
-    _page = 1; // Reset to first page
-    List<dynamic> newData = await fetchData(_page);
-    setState(() {
-      _deliveryList = newData; // Replace current data with new data
-    });
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Error refreshing data: $e")),
-    );
-  } finally {
-    setState(() => _isLoading = false); // Hide loading indicator
+    try {
+      _page = 1; // Reset to the first page
+      List<dynamic> newData = await fetchData(_page);
+
+      setState(() {
+        _deliveryList = newData; // Replace current data with new data
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error refreshing data: $e")),
+      );
+    } finally {
+      setState(() => _isLoading = false); // Hide loading indicator
+    }
   }
-}
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
   @override
 Widget build(BuildContext context) {
   return Scaffold(

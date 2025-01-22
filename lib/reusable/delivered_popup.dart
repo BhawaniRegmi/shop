@@ -2001,11 +2001,13 @@
 
 
 
-
+//perfectly working code just just will scope is not implemented
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logistics/utils/color.dart';
+
+import '../newChange/scrollabletest.dart';
 
 class StatusDeliveredChangePopUp extends StatefulWidget {
   final VoidCallback onNextTap;
@@ -2157,9 +2159,286 @@ void dispose() {
         .join(";");
   }
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return AlertDialog(
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.all(Radius.circular(14.0)),
+  //     ),
+  //     insetPadding: EdgeInsets.all(16),
+  //     contentPadding: EdgeInsets.fromLTRB(25, 24, 25, 38),
+  //     clipBehavior: Clip.antiAliasWithSaveLayer,
+  //     content: SingleChildScrollView(
+  //       child: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         children: <Widget>[
+  //           GestureDetector(
+  //             onTap: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Container(
+  //               margin: EdgeInsets.fromLTRB(3, 0, 3, 0),
+  //               height: 15,
+  //               width: MediaQuery.of(context).size.width,
+  //               child: Align(
+  //                 alignment: Alignment.topRight,
+  //                 child: Image.asset("assets/images/cancel.png"),
+  //               ),
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: EdgeInsets.fromLTRB(50, 16, 50, 0),
+  //             child: Text(
+  //               "Do you want to change the status from",
+  //               style: TextStyle(
+  //                   fontFamily: "Roboto",
+  //                   fontWeight: FontWeight.w700,
+  //                   color: MyColors.ligtBlack,
+  //                   fontSize: 16),
+  //               textAlign: TextAlign.center,
+  //             ),
+  //           ),
+  //           Row(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: <Widget>[
+  //               Container(
+  //                 height: 65,
+  //                 width: 72,
+  //                 margin: EdgeInsets.fromLTRB(3, 16, 3, 0),
+  //                 padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+  //                 child: Center(
+  //                     child: Text(
+  //                   widget.currentStatus,
+  //                   style: TextStyle(
+  //                       fontFamily: "Roboto",
+  //                       fontWeight: FontWeight.w500,
+  //                       color: MyColors.ligtBlack,
+  //                       fontSize: 12),
+  //                   textAlign: TextAlign.center,
+  //                 )),
+  //                 decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(8),
+  //                   color: MyColors.lightGrey,
+  //                 ),
+  //               ),
+  //               Center(
+  //                 child: Container(
+  //                   margin: EdgeInsets.fromLTRB(3, 16, 3, 0),
+  //                   height: 65,
+  //                   width: 72,
+  //                   child: Align(
+  //                     alignment: Alignment.center,
+  //                     child: Image.asset("assets/images/middivider.png"),
+  //                   ),
+  //                 ),
+  //               ),
+  //               Container(
+  //                 height: 65,
+  //                 width: 72,
+  //                 margin: EdgeInsets.fromLTRB(3, 16, 3, 0),
+  //                 padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+  //                 child: Center(
+  //                     child: Text(
+  //                   widget.newStatus,
+  //                   style: TextStyle(
+  //                       fontFamily: "Roboto",
+  //                       fontWeight: FontWeight.w500,
+  //                       color: MyColors.white,
+  //                       fontSize: 12),
+  //                   textAlign: TextAlign.center,
+  //                 )),
+  //                 decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(8),
+  //                   color: MyColors.green,
+  //                 ),
+  //               )
+  //             ],
+  //           ),
+  //           Row(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             children: <Widget>[
+  //               Padding(
+  //                 padding: EdgeInsets.fromLTRB(22, 32, 0, 20),
+  //                 child: Text(
+  //                   "Product Name :",
+  //                   textAlign: TextAlign.left,
+  //                   style: TextStyle(
+  //                     color: MyColors.darkGreyText,
+  //                     fontFamily: 'Roboto',
+  //                     fontWeight: FontWeight.w500,
+  //                     fontSize: 14.0,
+  //                   ),
+  //                 ),
+  //               ),
+  //               Padding(
+  //                 padding: EdgeInsets.fromLTRB(16, 32, 32, 20),
+  //                 child: Text(
+  //                   " ${widget.productname}",
+  //                   textAlign: TextAlign.left,
+  //                   style: TextStyle(
+  //                     color: MyColors.darkGreyText,
+  //                     fontFamily: 'Roboto',
+  //                     fontWeight: FontWeight.w500,
+  //                     fontSize: 14.0,
+  //                   ),
+  //                 ),
+  //               )
+  //             ],
+  //           ),
+  //           Row(
+  //             mainAxisAlignment: MainAxisAlignment.start,
+  //             children: <Widget>[
+  //               Padding(
+  //                 padding: EdgeInsets.fromLTRB(22, 0, 45, 0),
+  //                 child: Text(
+  //                   "Product Price :",
+  //                   textAlign: TextAlign.left,
+  //                   style: TextStyle(
+  //                     color: MyColors.ligtGreyText,
+  //                     fontFamily: 'Roboto',
+  //                     fontWeight: FontWeight.w500,
+  //                     fontSize: 14.0,
+  //                   ),
+  //                 ),
+  //               ),
+  //               Padding(
+  //                 padding: EdgeInsets.fromLTRB(24, 0, 32, 0),
+  //                 child: Text(
+  //                   "Rs ${widget.price}",
+  //                   textAlign: TextAlign.left,
+  //                   style: TextStyle(
+  //                     color: MyColors.ligtGreyText,
+  //                     fontFamily: 'Roboto',
+  //                     fontWeight: FontWeight.w500,
+  //                     fontSize: 14.0,
+  //                   ),
+  //                 ),
+  //               )
+  //             ],
+  //           ),
+  //           SizedBox(height: 10),
+  //           Row(
+  //             children: [
+  //               Expanded(
+  //                 child: DropdownButton<String>(
+  //                   hint: Text("Select Payment Method"),
+  //                   items: paymentMethods.map((method) {
+  //                     return DropdownMenuItem(
+  //                       value: method,
+  //                       child: Text(method),
+  //                     );
+  //                   }).toList(),
+  //                   onChanged: (selectedMethod) {
+  //                     if (selectedMethod != null) addPaymentMethod(selectedMethod);
+  //                   },
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //           SizedBox(height: 10),
+  //           Column(
+  //             children: selectedPayments.asMap().entries.map((entry) {
+  //               int index = entry.key;
+  //               var payment = entry.value;
+  //               return Padding(
+  //                 padding: const EdgeInsets.symmetric(vertical: 8.0),
+  //                 child: Row(
+  //                   children: [
+  //                     Expanded(
+  //                       child: Text(payment['method']),
+  //                     ),
+  //                     SizedBox(width: 10),
+  //                     Expanded(
+  //                       child: Container(
+  //                         height: 40.0,
+  //                         child: TextField(
+  //                           controller: payment['controller'],
+  //                           keyboardType: TextInputType.number,
+  //                           inputFormatters: <TextInputFormatter>[
+  //                             FilteringTextInputFormatter.digitsOnly,
+  //                           ],
+  //                           decoration: InputDecoration(
+  //                             border: OutlineInputBorder(),
+  //                             hintText: "Enter amount",
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                     IconButton(
+  //                       icon: Icon(Icons.delete),
+  //                       onPressed: () => removePaymentMethod(index),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               );
+  //             }).toList(),
+  //           ),
+  //           SizedBox(height: 20),
+  //           TextField(
+  //             controller: widget.totalAmountController,
+  //             readOnly: true,
+  //             decoration: InputDecoration(
+  //             labelText: "Total Amount",
+  //             border: InputBorder.none,
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //     actions: [
+  //       Center(
+  //         child: ElevatedButton(
+  //           style: ElevatedButton.styleFrom(
+  //             primary: MyColors.primaryColor, // Set the button color to red
+  //           ),
+  //           onPressed: () {
+  //             if (widget.totalAmountController.text.isEmpty ||
+  //           widget.totalAmountController.text == "0.00") {
+  //         setState(() {
+  //           showError = true;
+  //         });
+  //             } else {
+  //         // Generate the formatted string
+  //         String formattedPayments = getFormattedPayments();
+  //         widget.priceBreakDown.text = formattedPayments;
+  //         print("Formatted Payments: $formattedPayments");
+
+  //         // Close the dialog and call the onNextTap
+  //         Navigator.of(context).pop();
+  //         widget.onNextTap();
+  //             }
+  //           },
+  //           child: Padding(
+  //             padding: EdgeInsets.fromLTRB(45, 15, 45, 15),
+  //             child: Text(
+  //         "Next",
+  //         style: TextStyle(
+  //           color: MyColors.white,
+  //           fontFamily: 'Roboto',
+  //           fontWeight: FontWeight.w500,
+  //           fontSize: 14.0,
+  //         ),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+
+
   @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
+Widget build(BuildContext context) {
+  return WillPopScope(
+    onWillPop: () async {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => UserMain()), // Replace UserMain with your actual screen widget
+      );
+      return false;
+    },
+    child: AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(14.0)),
       ),
@@ -2288,12 +2567,14 @@ void dispose() {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(22, 0, 45, 0),
+                  // padding: EdgeInsets.fromLTRB(22, 0, 45, 0),
+                   padding: EdgeInsets.fromLTRB(16,32, 32, 20),
                   child: Text(
                     "Product Price :",
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                      color: MyColors.ligtGreyText,
+                     // color: MyColors.ligtGreyText,
+                     color: MyColors.darkGreyText,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w500,
                       fontSize: 14.0,
@@ -2377,8 +2658,8 @@ void dispose() {
               controller: widget.totalAmountController,
               readOnly: true,
               decoration: InputDecoration(
-              labelText: "Total Amount",
-              border: InputBorder.none,
+                labelText: "Total Amount",
+                border: InputBorder.none,
               ),
             ),
           ],
@@ -2388,42 +2669,69 @@ void dispose() {
         Center(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: MyColors.primaryColor, // Set the button color to red
+              primary: MyColors.primaryColor,
             ),
-            onPressed: () {
-              if (widget.totalAmountController.text.isEmpty ||
-            widget.totalAmountController.text == "0.00") {
-          setState(() {
-            showError = true;
-          });
-              } else {
-          // Generate the formatted string
-          String formattedPayments = getFormattedPayments();
-          widget.priceBreakDown.text = formattedPayments;
-          print("Formatted Payments: $formattedPayments");
+            // onPressed: () {
+            //   if (widget.totalAmountController.text.isEmpty ||
+            //       widget.totalAmountController.text == "0.00") {
+            //     setState(() {
+            //       showError = true;
+            //     });
+            //   } else {
+            //     String formattedPayments = getFormattedPayments();
+            //     widget.priceBreakDown.text = formattedPayments;
+            //     print("Formatted Payments: $formattedPayments");
 
-          // Close the dialog and call the onNextTap
-          Navigator.of(context).pop();
-          widget.onNextTap();
+            //     Navigator.of(context).pop();
+            //     widget.onNextTap();
+            //   }
+            // },
+
+               onPressed: () {
+                if( widget.price=="0"){
+                   String formattedPayments = getFormattedPayments();
+                widget.priceBreakDown.text = formattedPayments;
+                print("Formatted Payments: $formattedPayments");
+
+                Navigator.of(context).pop();
+                widget.onNextTap();
+                }
+                  setState(() {
+                    showError = true;
+                  });
+              if (widget.totalAmountController.text.isEmpty ||
+                  widget.totalAmountController.text == "0.00") {
+                setState(() {
+                  showError = true;
+                });
+              } else {
+                String formattedPayments = getFormattedPayments();
+                widget.priceBreakDown.text = formattedPayments;
+                print("Formatted Payments: $formattedPayments");
+
+                Navigator.of(context).pop();
+                widget.onNextTap();
               }
             },
             child: Padding(
               padding: EdgeInsets.fromLTRB(45, 15, 45, 15),
               child: Text(
-          "Next",
-          style: TextStyle(
-            color: MyColors.white,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
-            fontSize: 14.0,
-          ),
+                "Next",
+                style: TextStyle(
+                  color: MyColors.white,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.0,
+                ),
               ),
             ),
           ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
+
 }
 
 

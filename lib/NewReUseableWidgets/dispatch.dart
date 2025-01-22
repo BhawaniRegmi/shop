@@ -2563,19 +2563,195 @@ String formatDate(String dateString) {
   return '$day\n$monthYear';
 }
 
+// class DynamicListScreen extends StatefulWidget {
+//   @override
+//   _DynamicListScreenState createState() => _DynamicListScreenState();
+// }
+
+// class _DynamicListScreenState extends State<DynamicListScreen> {
+//   EditPackageScreenContract _view;
+//   final Dio dio = Dio();
+//   ScrollController _scrollController = ScrollController();
+//   List<dynamic> _deliveryList = [];
+//   bool _isLoading = false;
+//   int _page = 1; // Start with page 1
+//   bool isLoggingOut = false;
+
+//   Future<List<dynamic>> fetchData(int page) async {
+//     BaseOptions options = BaseOptions(
+//       baseUrl: 'https://dashlogistics.dev/api/v1/employee/statusData',
+//       connectTimeout: Duration(milliseconds: 30000),
+//       receiveTimeout: Duration(milliseconds: 30000),
+//       validateStatus: (status) => status < 500,
+//     );
+
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+//     final String token = prefs.getString('token') ?? '';
+
+//     dio.options.headers["Authorization"] = "Bearer $token";
+
+//     try {
+//       final response = await dio.get(
+//         'https://dashlogistics.dev/api/v1/employee/statusData',
+
+//            queryParameters: {'status': 'outForDelivery', 'page': page}
+//       );
+
+//       if (response.statusCode == 200) {
+//         return response.data['data']; // Return the 'data' array
+//       }
+
+//       else {
+//         _view.onError("Something Went Wrong");
+//       }
+//     } catch (e) {
+//       _view.onError("Something Went Wrong");
+//     }
+//   }
+
+//    Future<void> _clearCache() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   prefs.remove('cachedOutFordelivery'); // Clear cache
+//   print("Cache cleared for testing.");
+// }
+//   @override
+//   void initState() {
+//     super.initState();
+
+//      _loadInitialData();
+//     _scrollController = ScrollController();
+
+//     _scrollController.addListener(() {
+//       print("5st***************");
+
+//       if (_scrollController.position.pixels >=
+//               _scrollController.position.maxScrollExtent - 50 &&
+//           !_isLoading) {
+//         print("1st***************");
+//          _loadMoreData();
+//       }
+//     });
+//   }
+
+// Future<void> _loadInitialData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   String cachedData = prefs.getString('cachedOutFordelivery');
+
+//   if (cachedData != null && cachedData.isNotEmpty) {
+//     // await _loadMoreData();
+//     print("Cache data is present *************");
+//     setState(() {
+//       _deliveryList = List<dynamic>.from(json.decode(cachedData));
+//     });
+//   } else {
+//     print("No cache data is present *************");
+//     await _loadMoreData(); // Load from server if no cached data
+//   }
+// }
+
+//   Future<Map<String, dynamic>> fetchRiderDetails() async {
+//     final Dio dio = Dio();
+
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+//       final String token = prefs.getString('token') ?? '';
+
+//       dio.options.headers['Authorization'] = 'Bearer $token';
+
+//     try {
+//       // Make GET request with Bearer Token
+//       final response = await dio.get(
+//         'https://dashlogistics.dev/api/v1/employee',
+//         options: Options(
+//           headers: {
+//             'Authorization': 'Bearer $token',
+//           },
+//         ),
+//       );
+
+//       if (response.statusCode == 200) {
+//         return response.data as Map<String, dynamic>;
+//       } else {
+//         throw Exception('Failed to fetch rider details!');
+//       }
+//     } on DioError catch (e) {
+//       if (e.response != null) {
+//         throw Exception(
+//             'Dio Error: ${e.response?.statusCode} - ${e.response?.data}');
+//       } else {
+//         throw Exception('Network error: ${e.message}');
+//       }
+//     }
+//   }
+
+// Future<void> _cacheData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setString('cachedOutFordelivery', json.encode(_deliveryList));
+//   print("Data cached successfully.");
+// }
+
+// Future<void> _loadMoreData() async {
+//   if (_isLoading) return; // Prevent multiple calls
+
+//   setState(() => _isLoading = true);
+
+//   try {
+//     List<dynamic> newData = await fetchData(_page);
+
+//     if (newData.isNotEmpty) {
+//       setState(() {
+//         _deliveryList.addAll(newData);
+//         _page++;
+//       });
+
+//       // Cache the updated data
+//       await _cacheData();
+//     } else {
+//       print("No more data available."); // No further API calls
+//     }
+//   } catch (e) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//     //  SnackBar(content: Text("Error loading data: $e")),
+//           SnackBar(
+//   content: Text("Session Expired. Please log in again"),
+// )
+//     );
+//     print("Error loading data: $e");
+//   } finally {
+//     setState(() => _isLoading = false);
+//   }
+// }
+
+//       void _logout() async {
+//     final SharedPreferences prefs = await SharedPreferences.getInstance();
+//     prefs.setString('token', "");
+
+//   await prefs.remove('cachedOutFordelivery'); // Clear delivery cache
+//   print("User logged out. Cache cleared.");
+//   // Navigate to login screen
+
+//   }
+
 class DynamicListScreen extends StatefulWidget {
   @override
   _DynamicListScreenState createState() => _DynamicListScreenState();
 }
 
 class _DynamicListScreenState extends State<DynamicListScreen> {
-  EditPackageScreenContract _view;
   final Dio dio = Dio();
   ScrollController _scrollController = ScrollController();
   List<dynamic> _deliveryList = [];
   bool _isLoading = false;
-  int _page = 1; // Start with page 1
+  int _page = 1;
   bool isLoggingOut = false;
+
+  void _logout() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', "");
+
+    await prefs.remove('cachedOutFordelivery'); // Clear delivery cache
+    print("User logged out. Cache cleared.");
+    // Navigate to login screen
+  }
 
   Future<List<dynamic>> fetchData(int page) async {
     BaseOptions options = BaseOptions(
@@ -2593,260 +2769,166 @@ class _DynamicListScreenState extends State<DynamicListScreen> {
     try {
       final response = await dio.get(
         'https://dashlogistics.dev/api/v1/employee/statusData',
-       // queryParameters: {'page': page}, // Pass the page number
-           queryParameters: {'status': 'outForDelivery', 'page': page}
+        queryParameters: {'status': 'outForDelivery', 'page': page},
       );
 
       if (response.statusCode == 200) {
-        return response.data['data']; // Return the 'data' array
-      }
-      //    else {
-      //     throw Exception('Failed to load data');
-      //   }
-      // } catch (e) {
-      //   throw Exception('Error: $e');
-      // }
-      else {
-        _view.onError("Something Went Wrong");
+        return response.data['data'];
+      } else {
+        throw Exception("Failed to load data");
       }
     } catch (e) {
-      _view.onError("Something Went Wrong");
+      throw Exception("Error fetching data: $e");
     }
   }
-  
-   Future<void> _clearCache() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('cachedOutFordelivery'); // Clear cache
-  print("Cache cleared for testing.");
-}
+
   @override
   void initState() {
     super.initState();
-   // _clearCache();
-     _loadInitialData();
-    _scrollController = ScrollController();
-
-
+    _loadInitialData();
     _scrollController.addListener(() {
-      print("5st***************");
-
       if (_scrollController.position.pixels >=
               _scrollController.position.maxScrollExtent - 50 &&
           !_isLoading) {
-        print("1st***************");
-         _loadMoreData();
+        _loadMoreData();
       }
     });
   }
 
-
-  
-
-Future<void> _loadInitialData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String cachedData = prefs.getString('cachedOutFordelivery');
-  
-  if (cachedData != null && cachedData.isNotEmpty) {
-    // await _loadMoreData();
-    print("Cache data is present *************");
-    setState(() {
-      _deliveryList = List<dynamic>.from(json.decode(cachedData));
-    });
-  } else {
-    print("No cache data is present *************");
-    await _loadMoreData(); // Load from server if no cached data
+  Future<void> _loadInitialData() async {
+    _deliveryList.clear(); // Clear the list to avoid mixing old data
+    await _loadMoreData(); // Always load from server
   }
-}
 
+  Future<void> _loadMoreData() async {
+    if (_isLoading) return;
 
-
-  Future<Map<String, dynamic>> fetchRiderDetails() async {
-    final Dio dio = Dio();
-
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String token = prefs.getString('token') ?? '';
-
-      dio.options.headers['Authorization'] = 'Bearer $token';
+    setState(() => _isLoading = true);
 
     try {
-      // Make GET request with Bearer Token
-      final response = await dio.get(
-        'https://dashlogistics.dev/api/v1/employee',
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-          },
-        ),
+      List<dynamic> newData = await fetchData(_page);
+
+      if (newData.isNotEmpty) {
+        setState(() {
+          _deliveryList.addAll(newData);
+          _page++;
+        });
+      } else {
+        print("No more data available.");
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error loading data: $e")),
       );
-
-      if (response.statusCode == 200) {
-        return response.data as Map<String, dynamic>;
-      } else {
-        throw Exception('Failed to fetch rider details!');
-      }
-    } on DioError catch (e) {
-      if (e.response != null) {
-        throw Exception(
-            'Dio Error: ${e.response?.statusCode} - ${e.response?.data}');
-      } else {
-        throw Exception('Network error: ${e.message}');
-      }
+    } finally {
+      setState(() => _isLoading = false);
     }
-  }
-
-
-
-Future<void> _cacheData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  // await prefs.setString('cachedDeliveryList', json.encode(_deliveryList));
-  await prefs.setString('cachedOutFordelivery', json.encode(_deliveryList));
-  print("Data cached successfully.");
-}
-
-Future<void> _loadMoreData() async {
-  if (_isLoading) return; // Prevent multiple calls
-
-  setState(() => _isLoading = true);
-
-  try {
-    List<dynamic> newData = await fetchData(_page);
-
-    if (newData.isNotEmpty) {
-      setState(() {
-        _deliveryList.addAll(newData);
-        _page++;
-      });
-
-      // Cache the updated data
-      await _cacheData();
-    } else {
-      print("No more data available."); // No further API calls
-    }
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-    //  SnackBar(content: Text("Error loading data: $e")),
-          SnackBar(
-  content: Text("Session Expired. Please log in again"),
-)
-    );
-    print("Error loading data: $e");
-  } finally {
-    setState(() => _isLoading = false);
-  }
-}
-
-
-      void _logout() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', "");
-
-   
-  await prefs.remove('cachedOutFordelivery'); // Clear delivery cache
-  print("User logged out. Cache cleared.");
-  // Navigate to login screen
-    
   }
 
   @override
-Widget build(BuildContext context) {
-      void _showConfirmationDialog(String message) {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-            insetPadding: EdgeInsets.all(16),
-            contentPadding: EdgeInsets.fromLTRB(0, 16, 0, 0),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            content: Container(
-              child: new Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(16, 6, 16, 16),
-                    child: Text(
-                      message,
-                      style: TextStyle(
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.w700,
-                          color: MyColors.ligtBlack,
-                          fontSize: 16),
-                      textAlign: TextAlign.center,
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    void _showConfirmationDialog(String message) {
+      // flutter defined function
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return AlertDialog(
+              insetPadding: EdgeInsets.all(16),
+              contentPadding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              content: Container(
+                child: new Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(16, 6, 16, 16),
+                      child: Text(
+                        message,
+                        style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            color: MyColors.ligtBlack,
+                            fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                  ),
-                  Container(
-                    color: MyColors.scanDivider,
-                    height: 1,
-                  ),
-                  new Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                            setState(() {});
+                    Container(
+                      color: MyColors.scanDivider,
+                      height: 1,
+                    ),
+                    new Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                              setState(() {});
+                            },
+                            child: Container(
+                                height: 50,
+                                width: 100,
+                                padding: EdgeInsets.all(16),
+                                child: new Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      color: MyColors.primaryColor,
+                                      fontFamily: "roboto",
+                                      fontWeight: FontWeight.w700),
+                                  textAlign: TextAlign.center,
+                                ))),
+                        GestureDetector(
+                          onTap: () async {
+                            setState(() {
+                              isLoggingOut = true; // Show loading indicator.
+                            });
+                            await _logout(); // Perform logout logic.
+                            setState(() {
+                              isLoggingOut = false; // Hide loading indicator.
+                            });
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginScreen()),
+                              (Route<dynamic> route) => false,
+                            );
                           },
                           child: Container(
-                              height: 50,
-                              width: 100,
-                              padding: EdgeInsets.all(16),
-                              child: new Text(
-                                "Cancel",
-                                style: TextStyle(
-                                    color: MyColors.primaryColor,
-                                    fontFamily: "roboto",
-                                    fontWeight: FontWeight.w700),
-                                textAlign: TextAlign.center,
-                              ))),
-                    
+                            height: 50,
+                            width: 100,
+                            padding: EdgeInsets.all(16),
+                            child: Text(
+                              "OK",
+                              style: TextStyle(
+                                color: MyColors.primaryColor,
+                                fontFamily: "roboto",
+                                fontWeight: FontWeight.w700,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ));
+        },
+      );
+    }
 
-  GestureDetector(
-          onTap: () async {
-            setState(() {
-              isLoggingOut = true; // Show loading indicator.
-            });
-            await _logout(); // Perform logout logic.
-            setState(() {
-              isLoggingOut = false; // Hide loading indicator.
-            });
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => LoginScreen()),
-              (Route<dynamic> route) => false,
-            );
-          },
-          child: Container(
-            height: 50,
-            width: 100,
-            padding: EdgeInsets.all(16),
-            child: Text(
-              "OK",
-              style: TextStyle(
-                color: MyColors.primaryColor,
-                fontFamily: "roboto",
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-                    ],
-                  ),
-                ],
-              ),
-            ));
-      },
-    );
-  }
-  
-  return Scaffold(
-    drawer: MyDrawer(),
-   
-         appBar: AppBar(
+    return Scaffold(
+      drawer: MyDrawer(),
+      appBar: AppBar(
         title: Text(
           "Home",
           style: TextStyle(color: Colors.red),
@@ -2863,69 +2945,68 @@ Widget build(BuildContext context) {
           ),
         ),
       ),
-    body: RefreshIndicator(
-      onRefresh: () async {
-        // Fetch new data when user pulls down to refresh
-        await _loadNewData();
-      },
-      child: Scaffold(
-        floatingActionButton:     FloatingActionButton(
-          onPressed: () {
-        
-          // Scroll to top with an animation
-                      _scrollController.animateTo(
-                        0.0,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-          },
-          child: Icon(Icons.arrow_upward),
-        ),
-        body: SingleChildScrollView(
-          controller: _scrollController, // Attach the scroll controller
-          child: Column(
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(), // Disable internal scrolling
-                itemCount: _deliveryList.length + (_isLoading ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index == _deliveryList.length) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  final item = _deliveryList[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: buildDeliveryContainer(item, context),
-                  );
-                },
-              ),               
-            ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          // Fetch new data when user pulls down to refresh
+          await _loadNewData();
+        },
+        child: Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // Scroll to top with an animation
+              _scrollController.animateTo(
+                0.0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            },
+            child: Icon(Icons.arrow_upward),
+          ),
+          body: SingleChildScrollView(
+            controller: _scrollController, // Attach the scroll controller
+            child: Column(
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics:
+                      NeverScrollableScrollPhysics(), // Disable internal scrolling
+                  itemCount: _deliveryList.length + (_isLoading ? 1 : 0),
+                  itemBuilder: (context, index) {
+                    if (index == _deliveryList.length) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    final item = _deliveryList[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: buildDeliveryContainer(item, context),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
 // Function to fetch new data
-Future<void> _loadNewData() async {
-  setState(() => _isLoading = true); // Show loading indicator
-  try {
-    _page = 1; // Reset to first page
-    List<dynamic> newData = await fetchData(_page);
-    setState(() {
-      _deliveryList = newData; // Replace current data with new data
-    });
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Error refreshing data: $e")),
-    );
-  } finally {
-    setState(() => _isLoading = false); // Hide loading indicator
+  Future<void> _loadNewData() async {
+    setState(() => _isLoading = true); // Show loading indicator
+    try {
+      _page = 1; // Reset to first page
+      List<dynamic> newData = await fetchData(_page);
+      setState(() {
+        _deliveryList = newData; // Replace current data with new data
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error refreshing data: $e")),
+      );
+    } finally {
+      setState(() => _isLoading = false); // Hide loading indicator
+    }
   }
-}
-
 
   Widget buildDeliveryContainer(
       Map<String, dynamic> detail, BuildContext context) {
@@ -2947,14 +3028,16 @@ Future<void> _loadNewData() async {
       padding: const EdgeInsets.all(2.0),
       child: Column(
         children: [
-          Text(
-            detail['product_name'] ?? 'Unknown Product',
+            Text(
+            detail['product_name'] != null && detail['product_name'].length > 20
+              ? '${detail['product_name'].substring(0, 20)}...'
+              : detail['product_name'] ?? 'Unknown Product',
             style: TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-          ),
+            ),
           SizedBox(height: 6),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3027,9 +3110,9 @@ Future<void> _loadNewData() async {
                   ),
                 ],
               ),
-              SizedBox(
-                width: 9,
-              ),
+              // SizedBox(
+              //   width: 4,    //9
+              // ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -3075,12 +3158,12 @@ Future<void> _loadNewData() async {
                   ),
                 ],
               ),
-              VerticalDivider(
-                color: Colors.grey,
-                thickness: 1,
-                indent: 8,
-                endIndent: 8,
-              ),
+              // VerticalDivider(
+              //   color: Colors.grey,
+              //   thickness: 1,
+              //   indent: 8,
+              //   endIndent: 8,
+              // ),
               Column(
                 children: [
                   Row(
@@ -3109,42 +3192,44 @@ Future<void> _loadNewData() async {
                           size: 35,
                         ),
                         onPressed: () async {
-  // Show a loading dialog
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    },
-  );
+                          // Show a loading dialog
+                          showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                          );
 
-  try {
-    // Simulate data loading or perform an async operation
-    await Future.delayed(Duration(seconds: 2)); // Replace with actual async data fetch if needed
+                          try {
+                            // Simulate data loading or perform an async operation
+                            await Future.delayed(Duration(
+                                seconds:
+                                    2)); // Replace with actual async data fetch if needed
 
-    // Close the loader dialog
-    Navigator.of(context).pop();
+                            // Close the loader dialog
+                            Navigator.of(context).pop();
 
-    // Navigate to the next screen
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CommentList(trackingCode: detail["tracking_code"]),
-      ),
-    );
-  } catch (e) {
-    // Close the loader in case of an error
-    Navigator.of(context).pop();
+                            // Navigate to the next screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CommentList(
+                                    trackingCode: detail["tracking_code"]),
+                              ),
+                            );
+                          } catch (e) {
+                            // Close the loader in case of an error
+                            Navigator.of(context).pop();
 
-    // Optionally show an error message
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error: $e')),
-    );
-  }
-},
-
+                            // Optionally show an error message
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Error: $e')),
+                            );
+                          }
+                        },
                       ),
                     ],
                   ),
@@ -3156,7 +3241,6 @@ Future<void> _loadNewData() async {
                           color: Colors.red,
                           size: 35,
                         ),
-                     
                         onPressed: () async {
                           String phoneNumber = detail["receiver_contact"];
                           try {
