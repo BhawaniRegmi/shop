@@ -74,6 +74,7 @@ import 'dart:convert';
 import 'dart:io';
 
 
+import 'package:image_picker/image_picker.dart';
 import 'package:logistics/api/DetailApi.dart';
 import 'package:logistics/data/rest_ds.dart';
 import 'package:logistics/newChange/weightTextField.dart';
@@ -104,7 +105,7 @@ class SignaturePresenter {
 
   SignaturePresenter(this._view);
 
-  changeStatusToDelivery(String trackingId,String status, int hub,String remarks ,String amount ,File file,String priceBreakDown) async{
+  changeStatusToDelivery(String trackingId,String status, int hub,String remarks ,String amount ,File file,String priceBreakDown,XFile imageClient) async{
       try {
 
         File(file.path).exists();
@@ -113,7 +114,7 @@ class SignaturePresenter {
         // String weight=statusChangePopUp.finalPackageWeight;
         // print(statusChangePopUp.finalPackageWeight);
          // var response = await detailApiService.changeStatusWithFile(trackingId,status,hub,remarks,amount,file,weight);
-          var response = await detailApiService.changeStatusWithFile(trackingId,status,hub,remarks,amount,file,priceBreakDown);
+          var response = await detailApiService.changeStatusWithFile(trackingId,status,hub,remarks,amount,file,priceBreakDown,imageClient);
           print("the response is ****************************** $response");
         if (response is String)
        // if(response!="")

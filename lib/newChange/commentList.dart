@@ -1,4 +1,3 @@
-
 // import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart'; // For formatting date and time
 
@@ -53,7 +52,7 @@
 //       "date": "Aug 31 2022",
 //       "time": "13:07 PM"
 //     },
-    
+
 //     // Add more initial comments if needed
 //   ];
 
@@ -235,8 +234,6 @@
 //   }
 // }
 
-
-
 // all working code else than cache and pagination
 // import 'package:flutter/material.dart';
 // import 'package:dio/dio.dart';
@@ -363,9 +360,6 @@
 //     );
 //   }
 
-
-
-
 // Map<String, String> getFormattedDateAndTime(String responseDate) {
 //   // Parse the date string
 //   DateFormat inputFormat = DateFormat("d MMM yyyy HH:mm:ss");
@@ -380,7 +374,6 @@
 //     'time': formattedTime,
 //   };
 // }
-
 
 //   void _addReplyDialog(BuildContext context) {
 //     final TextEditingController commentController = TextEditingController();
@@ -503,9 +496,9 @@
 //                       trailing: Column(
 //                         crossAxisAlignment: CrossAxisAlignment.end,
 //                         children: [
-//                           Text("Date: ${result['date']}"), 
-//                           Text("Time: ${result['time']}"), 
-                         
+//                           Text("Date: ${result['date']}"),
+//                           Text("Time: ${result['time']}"),
+
 //                         ],
 //                       ),
 //                     ),
@@ -517,16 +510,7 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-//every thing working perfectly but loading even no more data is present making unneccesary pagination 
+//every thing working perfectly but loading even no more data is present making unneccesary pagination
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -534,7 +518,14 @@ import 'package:intl/intl.dart';
 
 class CommentList extends StatefulWidget {
   final String trackingCode;
-  CommentList({this.trackingCode});
+  final String customerName;
+  final String customerLocation;
+  final String customerPhone;
+  CommentList(
+      {this.trackingCode,
+      this.customerName,
+      this.customerLocation,
+      this.customerPhone});
 
   @override
   State<CommentList> createState() => _CommentListState();
@@ -553,104 +544,98 @@ class _CommentListState extends State<CommentList> {
     return prefs.getString('token');
   }
 
+  Future<void> fetchComments({bool refresh = false}) async {
+    if (isLoading) return; // Prevent duplicate requests if already loading.
 
-
-
-Future<void> fetchComments({bool refresh = false}) async {
-  if (isLoading) return; // Prevent duplicate requests if already loading.
-
-  setState(() {
-    isLoading = true; // Start loading.
-  });
-
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final String token = await getToken();
-
-  if (token == null || token.isEmpty) {
-    print("Bearer token is not available. Please login to obtain the token.");
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Please log in to continue.")),
-    );
     setState(() {
-      isLoading = false; // Stop loading.
+      isLoading = true; // Start loading.
     });
-    return;
-  }
 
-  try {
-    // Always load data from the server, ignoring any cached data.
-    final Dio dio = Dio();
-    print('Tracking Code: ${widget.trackingCode}');
-    final response = await dio.get(
-      'https://dashlogistics.dev/api/v1/employee/ordercomment',
-      queryParameters: {
-        'trackingCcode': widget.trackingCode,
-        'page': currentPage,
-      },
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      ),
-    );
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String token = await getToken();
 
-    if (response.statusCode == 200) {
-      List<Map<String, dynamic>> newComments = List<Map<String, dynamic>>.from(response.data['data']);
-      comments = newComments; // Replace old comments with new ones.
-      hasMore = newComments.isNotEmpty; // Check if there are more comments to fetch.
-
-      // Cache the latest comments.
-      prefs.setStringList(
-        'cachedComments',
-        comments.map((e) => e.toUriEncodedString()).toList(),
-      );
-    } else {
-      print("Failed to fetch comments: ${response.statusMessage}");
-    }
-  } catch (e) {
-    print("Error occurred while fetching comments: $e");
-    if (e is DioError && e.response?.statusCode == 401) {
+    if (token == null || token.isEmpty) {
+      print("Bearer token is not available. Please login to obtain the token.");
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Session expired. Please log in again.")),
+        SnackBar(content: Text("Please log in to continue.")),
       );
+      setState(() {
+        isLoading = false; // Stop loading.
+      });
+      return;
     }
-  } finally {
-    setState(() {
-      isLoading = false; // Stop the loader regardless of success or failure.
-      hasMore = false; // Prevent further pagination if desired.
+
+    try {
+      // Always load data from the server, ignoring any cached data.
+      final Dio dio = Dio();
+      print('Tracking Code: ${widget.trackingCode}');
+      final response = await dio.get(
+        'https://dashlogistics.dev/api/v1/employee/ordercomment',
+        queryParameters: {
+          'trackingCcode': widget.trackingCode,
+          'page': currentPage,
+        },
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        List<Map<String, dynamic>> newComments =
+            List<Map<String, dynamic>>.from(response.data['data']);
+        comments = newComments; // Replace old comments with new ones.
+        hasMore = newComments
+            .isNotEmpty; // Check if there are more comments to fetch.
+
+        // Cache the latest comments.
+        prefs.setStringList(
+          'cachedComments',
+          comments.map((e) => e.toUriEncodedString()).toList(),
+        );
+      } else {
+        print("Failed to fetch comments: ${response.statusMessage}");
+      }
+    } catch (e) {
+      print("Error occurred while fetching comments: $e");
+      if (e is DioError && e.response?.statusCode == 401) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Session expired. Please log in again.")),
+        );
+      }
+    } finally {
+      setState(() {
+        isLoading = false; // Stop the loader regardless of success or failure.
+        hasMore = false; // Prevent further pagination if desired.
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchComments();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent - 200 &&
+          hasMore && // Pagination disabled once data is fetched.
+          !isLoading) {
+        // Pagination logic removed.
+      }
+
+      if (_scrollController.offset > 200) {
+        setState(() {
+          showScrollToTopButton = true;
+        });
+      } else {
+        setState(() {
+          showScrollToTopButton = false;
+        });
+      }
     });
   }
-}
-
-
-@override
-void initState() {
-  super.initState();
-  fetchComments();
-
-  _scrollController.addListener(() {
-    if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent - 200 &&
-        hasMore && // Pagination disabled once data is fetched.
-        !isLoading) {
-      // Pagination logic removed.
-    }
-
-    if (_scrollController.offset > 200) {
-      setState(() {
-        showScrollToTopButton = true;
-      });
-    } else {
-      setState(() {
-        showScrollToTopButton = false;
-      });
-    }
-  });
-}
-
-
-
-
 
   @override
   void dispose() {
@@ -666,96 +651,92 @@ void initState() {
     );
   }
 
- 
-
-
-
-void _showCommentDetails(Map<String, dynamic> comment) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), // Rounded corners
-        ),
-        title: Center(
-          child: Text(
-            "Comment Detail",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-              color: Colors.blueAccent,
+  void _showCommentDetails(Map<String, dynamic> comment) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12), // Rounded corners
+          ),
+          title: Center(
+            child: Text(
+              "Comment Detail",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                color: Colors.blueAccent,
+              ),
             ),
           ),
-        ),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildDetailRow("Tracking Code:", widget.trackingCode ?? "N/A"),
-            SizedBox(height: 8),
-            _buildDetailRow("Comment:", comment['comment'] ?? "No Comment"),
-            SizedBox(height: 8),
-            _buildDetailRow("By:", comment['commentBy'] ?? "Unknown"),
-            SizedBox(height: 8),
-            _buildDetailRow(
-              "Date:",
-              comment['createdAt'] ?? "",
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _buildDetailRow("Tracking Code:", widget.trackingCode ?? "N/A"),
+              SizedBox(height: 8),
+              _buildDetailRow("Comment:", comment['comment'] ?? "No Comment"),
+              SizedBox(height: 8),
+              _buildDetailRow("By:", comment['commentBy'] ?? "Unknown"),
+              SizedBox(height: 8),
+              _buildDetailRow(
+                "Date:",
+                comment['createdAt'] ?? "",
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Close",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                _addReplyDialog(context);
+              },
+              child: Text(
+                "Reply",
+                style: TextStyle(color: Colors.blue),
+              ),
             ),
           ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text(
-              "Close",
-              style: TextStyle(color: Colors.red),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              _addReplyDialog(context);
-            },
-            child: Text(
-              "Reply",
-              style: TextStyle(color: Colors.blue),
-            ),
-          ),
-        ],
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 
-Widget _buildDetailRow(String title, String value) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "$title ",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-            fontSize: 16,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            value,
+  Widget _buildDetailRow(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "$title ",
             style: TextStyle(
-              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
               fontSize: 16,
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+          Expanded(
+            child: Text(
+              value,
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Map<String, String> getFormattedDateAndTime(String responseDate) {
     DateFormat inputFormat = DateFormat("d MMM yyyy HH:mm:ss");
@@ -805,7 +786,6 @@ Widget _buildDetailRow(String title, String value) {
                 }
 
                 Navigator.of(context).pop();
-                Navigator.of(context).pop();
 
                 try {
                   final String token = await getToken();
@@ -836,9 +816,11 @@ Widget _buildDetailRow(String title, String value) {
                     ),
                   );
 
-                  print("Response: ${response.statusCode}, Body: ${response.data}");
+                  print(
+                      "Response: ${response.statusCode}, Body: ${response.data}");
 
-                  if (response.statusCode == 200 || response.statusCode == 201) {
+                  if (response.statusCode == 200 ||
+                      response.statusCode == 201) {
                     scaffoldMessenger.showSnackBar(
                       SnackBar(content: Text("Reply sent successfully!")),
                     );
@@ -851,7 +833,9 @@ Widget _buildDetailRow(String title, String value) {
                 } catch (e) {
                   print("Error while sending reply: $e");
                   scaffoldMessenger.showSnackBar(
-                    SnackBar(content: Text("An error occurred while sending the reply.")),
+                    SnackBar(
+                        content:
+                            Text("An error occurred while sending the reply.")),
                   );
                 }
               },
@@ -862,270 +846,293 @@ Widget _buildDetailRow(String title, String value) {
       },
     );
   }
+  //   Widget _infoText(String label, String value, double fontSize, Color color) {
+  //   return RichText(
+  //     text: TextSpan(
+  //       style: TextStyle(fontSize: fontSize, color: Colors.black87),
+  //       children: [
+  //         TextSpan(
+  //           text: "$label ",
+  //           style: TextStyle(fontWeight: FontWeight.bold, color: color),
+  //         ),
+  //         TextSpan(text: value),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-
-
-
-// @override
-// Widget build(BuildContext context) {
-//   return Scaffold(
-//     appBar: AppBar(
-//       backgroundColor: Colors.white, // Set AppBar color to white
-//       iconTheme: IconThemeData(color: Colors.black), // Set back arrow color to black
-//       title: Text(
-//         "Comments",
-//         style: TextStyle(color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
-//       ),
-//       elevation: 1, // Add a subtle shadow for the AppBar
-//     ),
-//     body: isLoading && comments.isEmpty
-//         ? Center(child: CircularProgressIndicator())
-//         : Stack(
-//             children: [
-//               ListView.builder(
-//                 controller: _scrollController,
-//                 itemCount: comments.length + (hasMore ? 1 : 0),
-//                 itemBuilder: (context, index) {
-//                   if (index == comments.length) {
-//                     return Padding(
-//                       padding: const EdgeInsets.all(16.0),
-//                       child: Center(child: CircularProgressIndicator()),
-//                     );
-//                   }
-
-//                   final comment = comments[index];
-//                   Map<String, String> result =
-//                       getFormattedDateAndTime(comment['createdAt'] ?? "");
-
-//                   return GestureDetector(
-//                     onTap: () {
-//                       _showCommentDetails(comment);
-//                     },
-//                     child: Card(
-//                       elevation: 4,
-//                       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-//                       shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(12), // Rounded corners
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.all(16.0),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             Text(
-//                               "Tracking Code: ${widget.trackingCode ?? "Unknown"}",
-//                               style: TextStyle(
-//                                 fontWeight: FontWeight.bold,
-//                                 fontSize: 16,
-//                                 color: Colors.blueAccent,
-//                               ),
-//                             ),
-//                             SizedBox(height: 8),
-//                             Text(
-//                               comment['commentBy'] ?? "Unknown",
-//                               style: TextStyle(
-//                                 fontSize: 14,
-//                                 color: Colors.black54,
-//                               ),
-//                             ),
-//                             SizedBox(height: 12),
-//                             Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                 Text(
-//                                   "Date: ${result['date']}",
-//                                   style: TextStyle(
-//                                     fontSize: 14,
-//                                     color: Colors.black87,
-//                                   ),
-//                                 ),
-//                                 Text(
-//                                   "Time: ${result['time']}",
-//                                   style: TextStyle(
-//                                     fontSize: 14,
-//                                     color: Colors.black87,
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                   );
-//                 },
-//               ),
-//               if (showScrollToTopButton)
-//                 Positioned(
-//                   bottom: 20,
-//                   right: 20,
-//                   child: FloatingActionButton(
-//                     onPressed: scrollToTop,
-//                     backgroundColor: Colors.red,
-//                     child: Icon(Icons.arrow_upward, color: Colors.white),
-//                   ),
-//                 ),
-//             ],
-//           ),
-//   );
-// }
-
-
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-       appBar: AppBar(
-      backgroundColor: Colors.white, // Set AppBar color to white
-      iconTheme: IconThemeData(color: Colors.black), // Set back arrow color to black
-      title: Text(
-        "Comments",
-        style: TextStyle(color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
-      ),
-      elevation: 1, // Add a subtle shadow for the AppBar
-    ),
-    body: isLoading
-        ? Center(child: CircularProgressIndicator()) // Loading state
-        : comments.isEmpty // If no comments are present
-            ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Container with message and IconButton
-                    Container(
-                      padding: EdgeInsets.all(16),
-                      child: Text(
-                        'Currently, no comments are present.',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-GestureDetector(
-  onTap: () {
-    // Handle comment creation
-    _addReplyDialog(context);
-  },
-  child: Container(
-    margin: EdgeInsets.symmetric(horizontal: 15), // Margin on left and right
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10), // Adjusted padding
-    decoration: BoxDecoration(
-      color: Colors.red.withOpacity(0.1),
-      borderRadius: BorderRadius.circular(30),
-      border: Border.all(color: Colors.red, width: 2),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+  Widget _infoText(String label, String value, double fontSize, Color color) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          Icons.add_comment,
-          size: 30.0, // Reduced icon size
-          color: Colors.red,
-        ),
-        SizedBox(width: 8),
         Text(
-          'Add Comment',
+          label,
           style: TextStyle(
-            fontSize: 16.0, // Reduced text size
             fontWeight: FontWeight.bold,
-            color: Colors.red,
+            fontSize: fontSize,
+            color: color,
+          ),
+        ),
+        SizedBox(height: 2), // Adds a small gap between label and value
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: Colors.black87,
           ),
         ),
       ],
-    ),
-  ),
-)
+    );
+  }
 
-
-
-                  ],
-                ),
-              )
-            :   ListView.builder(
-                controller: _scrollController,
-                itemCount: comments.length + (hasMore ? 1 : 0),
-                itemBuilder: (context, index) {
-                  if (index == comments.length) {
-                    return Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  }
-
-                  final comment = comments[index];
-                  Map<String, String> result =
-                      getFormattedDateAndTime(comment['createdAt'] ?? "");
-
-                  return GestureDetector(
-                    onTap: () {
-                      _showCommentDetails(comment);
-                    },
-                    child: Card(
-                      elevation: 4,
-                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12), // Rounded corners
+  @override
+  Widget build(BuildContext context) {
+    double fontSize =
+        MediaQuery.of(context).size.width * 0.04; // Responsive font size
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Comments",
+          style: TextStyle(color: Colors.red),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        centerTitle: true,
+        actions: [
+          TextButton(
+            onPressed: () {
+              _addReplyDialog(context);
+              // Handle reply action
+            },
+            child: Text(
+              'Reply',
+              style: TextStyle(color: Colors.blue, fontSize: 12),
+            ),
+          ),
+        ],
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator()) // Loading state
+          : comments.isEmpty // If no comments are present
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Container with message and IconButton
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          'Currently, no comments are present.',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tracking Code: ${widget.trackingCode ?? "Unknown"}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: Colors.blueAccent,
+                      GestureDetector(
+                        onTap: () {
+                          // Handle comment creation
+                          _addReplyDialog(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 15), // Margin on left and right
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10), // Adjusted padding
+                          decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(color: Colors.red, width: 2),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add_comment,
+                                size: 30.0, // Reduced icon size
+                                color: Colors.red,
                               ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              comment['commentBy'] ?? "Unknown",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black54,
+                              SizedBox(width: 8),
+                              Text(
+                                'Add Comment',
+                                style: TextStyle(
+                                  fontSize: 16.0, // Reduced text size
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 12),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Date: ${result['date']}",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black87,
-                                  ),
-                                ),
-                                Text(
-                                  "Time: ${result['time']}",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black87,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              : Column(
+                  // crossAxisAlignment:
+                  //     CrossAxisAlignment.start, // Align contents to the start
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween, // Even spacing
+                  children: [
+                    // Display the tracking code at the top
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 6.0, vertical: 4.0),
+                      child: Card(
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(
+                            direction: Axis.horizontal,
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: [
+                              _infoText(
+                                  "Name:",
+                                  "${widget.customerName ?? "Unknown"}",
+                                  fontSize,
+                                  Colors.black87),
+                              _infoText(
+                                  "Phone:",
+                                  "${widget.customerPhone ?? "Unknown"}",
+                                  fontSize,
+                                  Colors.black87),
+                              _infoText(
+                                  "Location:",
+                                  "${widget.customerLocation ?? "Unknown"}",
+                                  fontSize,
+                                  Colors.black87),
+                              _infoText(
+                                  "Tracking Code:",
+                                  "${widget.trackingCode ?? "Unknown"}",
+                                  fontSize,
+                                  Colors.black87),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
-    floatingActionButton: showScrollToTopButton
-        ? FloatingActionButton(
-            child: Icon(Icons.arrow_upward),
-            onPressed: () {
-              _scrollController.animateTo(0,
-                  duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
-            },
-          )
-        : null,
-  );
-}
+                    // ListView.builder for comments
+                    Expanded(
+                      child: ListView.builder(
+                        controller: _scrollController,
+                        itemCount: comments.length + (hasMore ? 1 : 0),
+                        itemBuilder: (context, index) {
+                          if (index == comments.length) {
+                            return Padding(
+                              padding: const EdgeInsets.all(
+                                  12.0), // Slightly larger padding
+                              child: Center(child: CircularProgressIndicator()),
+                            );
+                          }
 
+                          final comment = comments[index];
+                          Map<String, String> result = getFormattedDateAndTime(
+                              comment['createdAt'] ?? "");
 
+                          return Card(
+                            elevation:
+                                4, // Increased elevation for better emphasis
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8), // Added margin for space
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  10), // Rounded corners for a modern look
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(
+                                  16.0), // Increased padding for a spacious layout
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Comment text
+                                  Text(
+                                    comment['comment'] ?? "No Comment",
+                                    style: TextStyle(
+                                      fontSize:
+                                          16, // Increased font size for better readability
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                      height:
+                                          8), // Spacing between comment and date/time row
+                                  // Date and Time row
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.calendar_today,
+                                              size: 16,
+                                              color: Colors
+                                                  .grey), // Slightly larger icon
+                                          const SizedBox(width: 6),
+                                          Text(
+                                            "${result['date']} - ${comment['commentBy'] ?? "Unknown"}",
+                                            style: TextStyle(
+                                              fontSize:
+                                                  14, // Slightly larger font size
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.access_time,
+                                              size: 16,
+                                              color: Colors
+                                                  .grey), // Slightly larger icon
+                                          const SizedBox(width: 6),
+                                          Text(
+                                            result['time'] ?? "",
+                                            style: TextStyle(
+                                              fontSize:
+                                                  14, // Slightly larger font size
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+      floatingActionButton: showScrollToTopButton
+          ? FloatingActionButton(
+              child: Icon(Icons.arrow_upward),
+              onPressed: () {
+                _scrollController.animateTo(0,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeInOut);
+              },
+            )
+          : null,
+    );
+  }
 }
 
 extension UriEncodable on Map<String, dynamic> {

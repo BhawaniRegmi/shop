@@ -341,6 +341,7 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:logistics/reusable/SignatureboxOutline.dart';
@@ -358,6 +359,7 @@ class SignScreen extends StatefulWidget {
       this.collectedAmount,
       this.priceBreakdown,
       this.status,
+      this.imageClient,
       this.id,
       this.weight,
       this.remarks})
@@ -366,6 +368,7 @@ class SignScreen extends StatefulWidget {
   final String collectedAmount;
   final String priceBreakdown;
   final String status;
+  final XFile imageClient;
   final int id;
   final String remarks;
   final String weight;
@@ -460,7 +463,8 @@ class _SignState extends State<SignScreen> implements SignatureContract {
               widget.remarks,
               widget.collectedAmount,
               await _localFile,
-              widget.priceBreakdown
+              widget.priceBreakdown,
+              widget.imageClient,
             );
           });
         }

@@ -139,26 +139,7 @@ Padding(
   padding: const EdgeInsets.all(8.0),
   child: Center(
     child: GestureDetector(
-      // onTap: () {
-      //   // Show the image in a larger view when tapped
-      //   showDialog(
-      //     context: context,
-      //     builder: (BuildContext context) {
-      //       return Dialog(
-      //         child: Image.network(
-      //           response['voucherImage'],
-      //           height: 400,  // Larger height for clear view
-      //           width: 800,   // Larger width for clear view
-      //           errorBuilder: (context, error, stackTrace) => const Icon(
-      //             Icons.broken_image,
-      //             size: 100,
-      //             color: Colors.grey,
-      //           ),
-      //         ),
-      //       );
-      //     },
-      //   );
-      // },
+     
 
       onTap: () {
   // Show the image in a larger view when tapped

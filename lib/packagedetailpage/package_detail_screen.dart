@@ -30,7 +30,7 @@
 
 //   @override
 //   _PackageDetailPage createState() => _PackageDetailPage();
-  
+
 // }
 
 // class _PackageDetailPage extends State<PackageDetailScreen>
@@ -57,12 +57,10 @@
 //     if (isInitail) {
 //       setState(() {});
 
-
 //     if(newweightobj.newweight1!='')newWeight2=newweightobj.newweight1;
 //     else newWeight2=detail.finalPackageWeight;
 //    // double number1 = double.parse(newWeight2);
 
-      
 //       if (autoStatusChange == "delivered") {
 // print("before signin screen 1**********************************************");
 //      Navigator.push(
@@ -124,7 +122,7 @@
 //                     remarks: remarkController.text ?? "",
 //                   )),
 //         );
-//       } 
+//       }
 
 //       if (selectedStatus == "delivered") {
 //         print("before signin screen 3**********************************************");
@@ -262,7 +260,7 @@
 //     super.initState();
 //     _fetchData();
 //    // if(currentStatus=="Order Placed") finalPackageWeight=newweightobj.newweight1;
-  
+
 //   }
 
 //   void _fetchData() {
@@ -284,10 +282,9 @@
 //           setState(() {
 //             isInitail = true;
 //           });
-//           if (autoStatusChange == "delivered" && detail.client == "yes") 
+//           if (autoStatusChange == "delivered" && detail.client == "yes")
 //            //yes batai weight change huna ho
 
-          
 //             showDialog(
 //                 context: context,
 //                 barrierDismissible: false,
@@ -366,7 +363,7 @@
 //           .isEmpty) {
 //       } else {
 //         for (var i = 0; i < forwardStatus.length; i++) {
-      
+
 //           if (forwardStatus[i].key == detail.currentStatus) {
 //             if (forwardStatus[i]
 //                 .status
@@ -397,7 +394,6 @@
 
 //   String _getAutoStatus() {
 //     for (var i = 0; i < forwardStatus.length; i++) {
-   
 
 //       if (forwardStatus[i].key == detail.currentStatus) {
 //         if (forwardStatus[i].status.length == 1) {
@@ -430,7 +426,7 @@
 //     for (var i = 0; i < this.status.length; i++) {
 //        if(i==1) continue;
 //       if (this.status[i].key == status) {
-        
+
 //         return this.status[i].key;
 //       }
 //     }
@@ -999,7 +995,7 @@
 //                             ],
 //                           )),
 //                       Container(
-                        
+
 //                           padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
 //                           child: Row(
 //                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1417,15 +1413,13 @@
 
 //   @override
 //   void onStatusChangeSuccess() {
-    // Navigator.pushAndRemoveUntil(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => QRViewExample()),
-    //   (Route<dynamic> route) => false,
-    // );
+// Navigator.pushAndRemoveUntil(
+//   context,
+//   MaterialPageRoute(builder: (context) => QRViewExample()),
+//   (Route<dynamic> route) => false,
+// );
 //   }
 // }
-
-
 
 // import 'package:logistics/galliMap/signatureMap.dart';
 // import 'package:logistics/login/login_screen.dart';
@@ -1459,7 +1453,7 @@
 
 //   @override
 //   _PackageDetailPage createState() => _PackageDetailPage();
-  
+
 // }
 
 // class _PackageDetailPage extends State<PackageDetailScreen>
@@ -1486,12 +1480,10 @@
 //     if (isInitail) {
 //       setState(() {});
 
-
 //     if(newweightobj.newweight1!='')newWeight2=newweightobj.newweight1;
 //     else newWeight2=detail.finalPackageWeight;
 //    // double number1 = double.parse(newWeight2);
 
-      
 //       if (autoStatusChange == "delivered") {
 // print("before signin screen 1**********************************************");
 //      Navigator.push(
@@ -1553,7 +1545,7 @@
 //                     remarks: remarkController.text ?? "",
 //                   )),
 //         );
-//       } 
+//       }
 
 //       if (selectedStatus == "delivered") {
 //         print("before signin screen 3**********************************************");
@@ -1691,7 +1683,7 @@
 //     super.initState();
 //     _fetchData();
 //    // if(currentStatus=="Order Placed") finalPackageWeight=newweightobj.newweight1;
-  
+
 //   }
 
 //   void _fetchData() {
@@ -1713,10 +1705,9 @@
 //           setState(() {
 //             isInitail = true;
 //           });
-//           if (autoStatusChange == "delivered" && detail.client == "yes") 
+//           if (autoStatusChange == "delivered" && detail.client == "yes")
 //            //yes batai weight change huna ho
 
-          
 //             showDialog(
 //                 context: context,
 //                 barrierDismissible: false,
@@ -1797,7 +1788,7 @@
 //           .isEmpty) {
 //       } else {
 //         for (var i = 0; i < forwardStatus.length; i++) {
-      
+
 //           if (forwardStatus[i].key == detail.currentStatus) {
 //             if (forwardStatus[i]
 //                 .status
@@ -1828,7 +1819,6 @@
 
 //   String _getAutoStatus() {
 //     for (var i = 0; i < forwardStatus.length; i++) {
-   
 
 //       if (forwardStatus[i].key == detail.currentStatus) {
 //         if (forwardStatus[i].status.length == 1) {
@@ -1861,7 +1851,7 @@
 //     for (var i = 0; i < this.status.length; i++) {
 //        if(i==1) continue;
 //       if (this.status[i].key == status) {
-        
+
 //         return this.status[i].key;
 //       }
 //     }
@@ -2434,7 +2424,7 @@
 //                             ],
 //                           )),
 //                       Container(
-                        
+
 //                           padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
 //                           child: Row(
 //                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -2860,8 +2850,6 @@
 //   }
 // }
 
-
-
 // import 'package:logistics/galliMap/signatureMap.dart';
 // import 'package:logistics/login/login_screen.dart';
 // import 'package:flutter/material.dart';
@@ -2895,7 +2883,7 @@
 
 //   @override
 //   _PackageDetailPage createState() => _PackageDetailPage();
-  
+
 // }
 
 // class _PackageDetailPage extends State<PackageDetailScreen>
@@ -2922,12 +2910,10 @@
 //     if (isInitail) {
 //       setState(() {});
 
-
 //     if(newweightobj.newweight1!='')newWeight2=newweightobj.newweight1;
 //     else newWeight2=detail.finalPackageWeight;
 //    // double number1 = double.parse(newWeight2);
 
-      
 //       if (autoStatusChange == "delivered") {
 // print("before signin screen 1**********************************************");
 //      Navigator.push(
@@ -2989,7 +2975,7 @@
 //                     remarks: remarkController.text ?? "",
 //                   )),
 //         );
-//       } 
+//       }
 
 //       if (selectedStatus == "delivered") {
 //         print("before signin screen 3**********************************************");
@@ -3127,7 +3113,7 @@
 //     super.initState();
 //     _fetchData();
 //    // if(currentStatus=="Order Placed") finalPackageWeight=newweightobj.newweight1;
-  
+
 //   }
 
 //   void _fetchData() {
@@ -3149,10 +3135,9 @@
 //           setState(() {
 //             isInitail = true;
 //           });
-//           if (autoStatusChange == "delivered" && detail.client == "yes") 
+//           if (autoStatusChange == "delivered" && detail.client == "yes")
 //            //yes batai weight change huna ho
 
-          
 //             showDialog(
 //                 context: context,
 //                 barrierDismissible: false,
@@ -3233,7 +3218,7 @@
 //           .isEmpty) {
 //       } else {
 //         for (var i = 0; i < forwardStatus.length; i++) {
-      
+
 //           if (forwardStatus[i].key == detail.currentStatus) {
 //             if (forwardStatus[i]
 //                 .status
@@ -3264,7 +3249,6 @@
 
 //   String _getAutoStatus() {
 //     for (var i = 0; i < forwardStatus.length; i++) {
-   
 
 //       if (forwardStatus[i].key == detail.currentStatus) {
 //         if (forwardStatus[i].status.length == 1) {
@@ -3297,7 +3281,7 @@
 //     for (var i = 0; i < this.status.length; i++) {
 //        if(i==1) continue;
 //       if (this.status[i].key == status) {
-        
+
 //         return this.status[i].key;
 //       }
 //     }
@@ -3540,7 +3524,7 @@
 //         );
 //         return false; // Return false to prevent the default back action
 //       },
-//       child: 
+//       child:
 
 // Scaffold(
 //         key: scaffoldKey,
@@ -3882,7 +3866,7 @@
 //                             ],
 //                           )),
 //                       Container(
-                        
+
 //                           padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
 //                           child: Row(
 //                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -4310,7 +4294,9 @@
 //   }
 // }
 
-
+import 'package:image_picker/image_picker.dart';
+import 'package:logistics/NewReUseableWidgets/canceledReason.dart';
+import 'package:logistics/NewReUseableWidgets/rescheduleReason.dart';
 import 'package:logistics/galliMap/signatureMap.dart';
 import 'package:logistics/login/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -4336,22 +4322,21 @@ import '../reusable/custombutton.dart';
 import 'detail_presenter.dart';
 import 'package:logistics/response/Permisisonstatus.dart';
 
-class PackageDetailScreen  extends StatefulWidget {
+class PackageDetailScreen extends StatefulWidget {
   PackageDetailScreen({Key key, this.code}) : super(key: key);
 
   final String code;
- // Define a GlobalKey to access the state from outside
-  static final GlobalKey<_PackageDetailPage> globalKey = GlobalKey<_PackageDetailPage>();
+  // Define a GlobalKey to access the state from outside
+  static final GlobalKey<_PackageDetailPage> globalKey =
+      GlobalKey<_PackageDetailPage>();
 
   @override
   _PackageDetailPage createState() => _PackageDetailPage();
-  
 }
 
 class _PackageDetailPage extends State<PackageDetailScreen>
     implements PackageDetailContract {
-
-      WeightInputDialog newweightobj=WeightInputDialog();
+  WeightInputDialog newweightobj = WeightInputDialog();
   BuildContext _ctx;
   PackageDetailPresenter _presenter;
   final scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -4361,10 +4346,10 @@ class _PackageDetailPage extends State<PackageDetailScreen>
   }
 //SignatureMap signatureMap=SignatureMap();
   PackageDetailM detail;
-String riderCurrentLatLng;
-    String newWeight2 ='';
+  String riderCurrentLatLng;
+  String newWeight2 = '';
 
-String get newWeight => newWeight2;
+  String get newWeight => newWeight2;
 
   _onTrackNextButton() {
     print("1234");
@@ -4372,31 +4357,31 @@ String get newWeight => newWeight2;
     if (isInitail) {
       setState(() {});
 
+      if (newweightobj.newweight1 != '')
+        newWeight2 = newweightobj.newweight1;
+      else
+        newWeight2 = detail.finalPackageWeight;
+      // double number1 = double.parse(newWeight2);
 
-    if(newweightobj.newweight1!='')newWeight2=newweightobj.newweight1;
-    else newWeight2=detail.finalPackageWeight;
-   // double number1 = double.parse(newWeight2);
-
-      
       if (autoStatusChange == "delivered") {
-print("before signin screen 1**********************************************");
-    //  Navigator.push(
-    //           context,
-    //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
-    //         );
-    //        if(signatureMap.latlngnew!=null){
-    //          riderCurrentLatLng=signatureMap.latlngnew.toString();
-    //          print("RiderCurrentLatLng1st***********************:${riderCurrentLatLng}");
-    //        }
+        print(
+            "before signin screen 1**********************************************");
+        //  Navigator.push(
+        //           context,
+        //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
+        //         );
+        //        if(signatureMap.latlngnew!=null){
+        //          riderCurrentLatLng=signatureMap.latlngnew.toString();
+        //          print("RiderCurrentLatLng1st***********************:${riderCurrentLatLng}");
+        //        }
 
         Navigator.push(
           _ctx,
           MaterialPageRoute(
               builder: (context) => SignScreen(
                     trackingId: detail.trackingCode,
-                   // collectedAmount: "500",
-                   collectedAmount: totalAmountController.text,
-                   priceBreakdown: priceBreakDown.text,
+                    collectedAmount: totalAmountController.text,
+                    priceBreakdown: priceBreakDown.text,
                     status: autoStatusChange,
                     id: dropdownValue.id,
                     remarks: remarkController.text,
@@ -4412,55 +4397,59 @@ print("before signin screen 1**********************************************");
               widget.code,
               autoStatusChange,
               isHubSelected ? dropdownValue.id : employeeHub,
-               newWeight2,
+              newWeight2,
               remarkController.text);
         }
       }
     } else {
       print("3rd");
       setState(() {});
-         if (selectedStatus == "orderConfirmed") {
-          print("before signin screen 2**********************************************");
-          print("before signin screen 2**********************************************");
-    //  Navigator.push(
-    //           context,
-    //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
-    //         );
-    //        if(signatureMap.latlngnew!=null){
-    //          riderCurrentLatLng=signatureMap.latlngnew.toString();
-    //          print("RiderCurrentLatLng 2nd***********************:${riderCurrentLatLng}");
-    //        }
+      if (selectedStatus == "orderConfirmed") {
+        print(
+            "before signin screen 2**********************************************");
+        print(
+            "before signin screen 2**********************************************");
+        //  Navigator.push(
+        //           context,
+        //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
+        //         );
+        //        if(signatureMap.latlngnew!=null){
+        //          riderCurrentLatLng=signatureMap.latlngnew.toString();
+        //          print("RiderCurrentLatLng 2nd***********************:${riderCurrentLatLng}");
+        //        }
         Navigator.push(
           _ctx,
           MaterialPageRoute(
               builder: (context) => SignScreen(
                     trackingId: detail.trackingCode,
-                    collectedAmount:  totalAmountController.text,
+                    collectedAmount: totalAmountController.text,
                     priceBreakdown: priceBreakDown.text,
                     status: "orderVerified",
                     id: dropdownValue.id,
                     remarks: remarkController.text ?? "",
                   )),
         );
-      } 
+      }
 
       if (selectedStatus == "delivered") {
-        print("before signin screen 3**********************************************");
-        print("before signin screen 3**********************************************");
-    //  Navigator.push(
-    //           context,
-    //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
-    //         );
-    //        if(signatureMap.latlngnew!=null){
-    //          riderCurrentLatLng=signatureMap.latlngnew.toString();
-    //          print("RiderCurrentLatLng 3rd***********************:${riderCurrentLatLng}");
-    //        }
+        print(
+            "before signin screen 3**********************************************");
+        print(
+            "before signin screen 3**********************************************");
+        //  Navigator.push(
+        //           context,
+        //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
+        //         );
+        //        if(signatureMap.latlngnew!=null){
+        //          riderCurrentLatLng=signatureMap.latlngnew.toString();
+        //          print("RiderCurrentLatLng 3rd***********************:${riderCurrentLatLng}");
+        //        }
         Navigator.push(
           _ctx,
           MaterialPageRoute(
               builder: (context) => SignScreen(
                     trackingId: detail.trackingCode,
-                    collectedAmount:  totalAmountController.text,
+                    collectedAmount: totalAmountController.text,
                     priceBreakdown: priceBreakDown.text,
                     status: selectedStatus,
                     id: dropdownValue.id,
@@ -4482,11 +4471,14 @@ print("before signin screen 1**********************************************");
     }
   }
 
-  _onNextButton()async {
+  _onNextButton() async {
     setState(() {});
-    print("before signin screen 4**********************************************");
-     print("${totalAmountController.text.toString()}toString*********************************");
-      print("${totalAmountController.text}WithoutString*********************************");
+    print(
+        "before signin screen 4**********************************************");
+    print(
+        "${totalAmountController.text.toString()}toString*********************************");
+    print(
+        "${totalAmountController.text}WithoutString*********************************");
     //  await Navigator.push(
     //           context,
     //           MaterialPageRoute(builder: (context) =>  SignatureMap()),
@@ -4500,9 +4492,9 @@ print("before signin screen 1**********************************************");
       MaterialPageRoute(
           builder: (context) => SignScreen(
                 trackingId: detail.trackingCode,
-               // collectedAmount: totalAmountController.text,
-               collectedAmount: totalAmountController.text,
-               priceBreakdown: priceBreakDown.text,
+                imageClient: imageClient,
+                collectedAmount: totalAmountController.text,
+                priceBreakdown: priceBreakDown.text,
                 status: selectedStatus,
                 id: dropdownValue.id,
                 remarks: remarkController.text,
@@ -4578,14 +4570,12 @@ print("before signin screen 1**********************************************");
   bool isHubSelected = false;
   int employeeHub;
   bool isFirst = true;
-  String finalPackageWeight="";
+  String finalPackageWeight = "";
 
   @override
   void initState() {
     super.initState();
     _fetchData();
-   // if(currentStatus=="Order Placed") finalPackageWeight=newweightobj.newweight1;
-  
   }
 
   void _fetchData() {
@@ -4607,10 +4597,9 @@ print("before signin screen 1**********************************************");
           setState(() {
             isInitail = true;
           });
-          if (autoStatusChange == "delivered" && detail.client == "yes") 
-           //yes batai weight change huna ho
+          if (autoStatusChange == "delivered" && detail.client == "yes")
+            //yes batai weight change huna ho
 
-          
             showDialog(
                 context: context,
                 barrierDismissible: false,
@@ -4620,29 +4609,30 @@ print("before signin screen 1**********************************************");
                       newStatus: _getStatusTitle(autoStatusChange),
                       productname: detail.productName ?? "",
                       price: detail.productPrice.toString(),
-                      totalAmountController: totalAmountController??"",
-                      
-                     // cashController: cashController,
-                     priceBreakDown: priceBreakDown??"",
+                      imageClient: imageClient,
+                      totalAmountController: totalAmountController ?? "",
+
+                      // cashController: cashController,
+                      priceBreakDown: priceBreakDown ?? "",
                       onNextTap: _onNextButton);
                 });
           else
-          print('nkknnnkknk');
+            print('nkknnnkknk');
           print(detail.currentStatus);
 
-            showDialog(
-                barrierDismissible: false,
-                context: context,
-                builder: (BuildContext context) {
-                  return StatusChangePopUp(
-                    finalPackageWeight:detail.finalPackageWeight,
-                    currentStatus: _getStatusTitle(detail.currentStatus),
-                    newStatus: _getStatusTitle(autoStatusChange),
-                    onTrackNextTap: _onTrackNextButton,
-                    onDetailTap: _onDetailButton,
-                    onCancelTap: _onCancelButton,
-                  );
-                });
+          showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (BuildContext context) {
+                return StatusChangePopUp(
+                  finalPackageWeight: detail.finalPackageWeight,
+                  currentStatus: _getStatusTitle(detail.currentStatus),
+                  newStatus: _getStatusTitle(autoStatusChange),
+                  onTrackNextTap: _onTrackNextButton,
+                  onDetailTap: _onDetailButton,
+                  onCancelTap: _onCancelButton,
+                );
+              });
         }
       }
     }
@@ -4664,9 +4654,10 @@ print("before signin screen 1**********************************************");
                     newStatus: _getStatusTitle(selectedStatus),
                     productname: detail.productName ?? "",
                     price: detail.productPrice.toString(),
-                    totalAmountController: totalAmountController??"",
-                    priceBreakDown: priceBreakDown??"",
-                  //  cashController: cashController,
+                    imageClient: imageClient,
+                    totalAmountController: totalAmountController ?? "",
+                    priceBreakDown: priceBreakDown ?? "",
+                    //  cashController: cashController,
                     onNextTap: _onNextButton);
               });
         else {
@@ -4694,7 +4685,6 @@ print("before signin screen 1**********************************************");
           .isEmpty) {
       } else {
         for (var i = 0; i < forwardStatus.length; i++) {
-      
           if (forwardStatus[i].key == detail.currentStatus) {
             if (forwardStatus[i]
                 .status
@@ -4725,8 +4715,6 @@ print("before signin screen 1**********************************************");
 
   String _getAutoStatus() {
     for (var i = 0; i < forwardStatus.length; i++) {
-   
-
       if (forwardStatus[i].key == detail.currentStatus) {
         if (forwardStatus[i].status.length == 1) {
           return forwardStatus[i].status[0];
@@ -4745,7 +4733,6 @@ print("before signin screen 1**********************************************");
 
   String _getStatusTitle(String status) {
     for (var i = 0; i < forwardStatus.length; i++) {
-      // if(i==1) continue;
       if (forwardStatus[i].key == status) {
         return forwardStatus[i].name;
       }
@@ -4756,9 +4743,8 @@ print("before signin screen 1**********************************************");
   String _getStatusLogistic(String status) {
     if (status == "delivered" || status == "") return "";
     for (var i = 0; i < this.status.length; i++) {
-       if(i==1) continue;
+      if (i == 1) continue;
       if (this.status[i].key == status) {
-        
         return this.status[i].key;
       }
     }
@@ -4816,15 +4802,6 @@ print("before signin screen 1**********************************************");
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  // new FlatButton(
-                  //   child: new Text(
-                  //     "OK",
-                  //     style: TextStyle(color: MyColors.primaryColor),
-                  //   ),
-                  //   onPressed: () {
-
-                  //   },
-                  // ),
                 ],
               ),
             ));
@@ -4928,21 +4905,6 @@ print("before signin screen 1**********************************************");
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  // new FlatButton(
-                  //   child: new Text(
-                  //     "OK",
-                  //     style: TextStyle(color: MyColors.primaryColor),
-                  //   ),
-                  //   onPressed: () {
-                  //     setState(() {});
-                  //     Navigator.pushAndRemoveUntil(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //           builder: (context) => QRViewExample()),
-                  //       (Route<dynamic> route) => false,
-                  //     );
-                  //   },
-                  // ),
                 ],
               ),
             ));
@@ -4955,10 +4917,11 @@ print("before signin screen 1**********************************************");
   final remarkController = TextEditingController();
   final totalAmountController = TextEditingController();
   final priceBreakDown = TextEditingController();
-   final cashController = TextEditingController();
-   final khaltiController = TextEditingController();
-   final esewaController = TextEditingController();
-   final mobBankingController = TextEditingController();
+  final cashController = TextEditingController();
+  final khaltiController = TextEditingController();
+  final esewaController = TextEditingController();
+  final mobBankingController = TextEditingController();
+  final imageClient = XFile("");
 
   @override
   Widget build(BuildContext context) {
@@ -4993,519 +4956,295 @@ print("before signin screen 1**********************************************");
         ));
 
     return WillPopScope(
-      onWillPop: () async {
-        // When back is pressed, navigate to the Dashboard screen
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => UserMain()),
-          (Route<dynamic> route) => false,  // Remove all routes to clear the stack
-        );
-        return false; // Return false to prevent the default back action
-      },
-      child: 
-
-Scaffold(
-        key: scaffoldKey,
-        appBar: AppBar(
-          title: Text("PACKAGE DETAIL",
-              style: TextStyle(color: MyColors.darkGreyText, fontSize: 16),
-              textAlign: TextAlign.center),
-          backgroundColor: MyColors.white,
-          automaticallyImplyLeading: false,
-          bottom: PreferredSize(
-              child: Container(
-                color: MyColors.toolbarBorder,
-                height: 1.0,
-              ),
-              preferredSize: Size.fromHeight(1.0)),
-          elevation: 0,
-        ),
-        body: _isLoading
-            ? new Center(
-                child: new CircularProgressIndicator(
-                backgroundColor: MyColors.white,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-              ))
-            : Container(
-                color: MyColors.white,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(15, 16, 0, 10),
-                        child: StaticTextOrangeSmall(
-                          staticText: "Order Status",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 100,
-                        child: ListView.builder(
-                            physics: ClampingScrollPhysics(),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.fromLTRB(9, 0, 9, 17),
-                            itemCount: (status != null && status.length != null)
-                                ? status.length
-                                : 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              return new GestureDetector(
-                                onTap: () {
-                                  print(status[index]);
-                                  _checkStatus(index);
-                                },
-                                child: Container(
-                                  height: 57,
-                                  width: 72,
-                                  margin: EdgeInsets.fromLTRB(3, 0, 3, 0),
-                                  padding: EdgeInsets.fromLTRB(3, 0, 3, 0),
-                                  child: Center(
-                                      child: Text(
-                                    '${status[index].name}',
-                                    style: status[index].isSelected == null
-                                        ? TextStyle(
-                                            fontFamily: "Roboto",
-                                            fontWeight: FontWeight.w500,
-                                            color:
-                                                status[index].isCurrentStatus ==
+        onWillPop: () async {
+          // When back is pressed, navigate to the Dashboard screen
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => UserMain()),
+            (Route<dynamic> route) =>
+                false, // Remove all routes to clear the stack
+          );
+          return false; // Return false to prevent the default back action
+        },
+        child: Scaffold(
+            key: scaffoldKey,
+            appBar: AppBar(
+              title: Text("PACKAGE DETAIL",
+                  style: TextStyle(color: MyColors.darkGreyText, fontSize: 16),
+                  textAlign: TextAlign.center),
+              backgroundColor: MyColors.white,
+              automaticallyImplyLeading: false,
+              bottom: PreferredSize(
+                  child: Container(
+                    color: MyColors.toolbarBorder,
+                    height: 1.0,
+                  ),
+                  preferredSize: Size.fromHeight(1.0)),
+              elevation: 0,
+            ),
+            body: _isLoading
+                ? new Center(
+                    child: new CircularProgressIndicator(
+                    backgroundColor: MyColors.white,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                  ))
+                : Container(
+                    color: MyColors.white,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(15, 16, 0, 10),
+                            child: StaticTextOrangeSmall(
+                              staticText: "Order Status",
+                            ),
+                          ),
+                          SizedBox(
+                            height: 100,
+                            child: ListView.builder(
+                                physics: ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                padding: const EdgeInsets.fromLTRB(9, 0, 9, 17),
+                                itemCount:
+                                    (status != null && status.length != null)
+                                        ? status.length
+                                        : 0,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return new GestureDetector(
+                                    onTap: () {
+                                      print(status[index]);
+                                      _checkStatus(index);
+                                    },
+                                    child: Container(
+                                      height: 57,
+                                      width: 72,
+                                      margin: EdgeInsets.fromLTRB(3, 0, 3, 0),
+                                      padding: EdgeInsets.fromLTRB(3, 0, 3, 0),
+                                      child: Center(
+                                          child: Text(
+                                        '${status[index].name}',
+                                        style: status[index].isSelected == null
+                                            ? TextStyle(
+                                                fontFamily: "Roboto",
+                                                fontWeight: FontWeight.w500,
+                                                color: status[index]
+                                                            .isCurrentStatus ==
                                                         null
                                                     ? MyColors.ligtBlack
                                                     : MyColors.white,
-                                            fontSize: 12)
-                                        : TextStyle(
-                                            fontFamily: "Roboto",
-                                            fontWeight: FontWeight.w500,
-                                            color: MyColors.white,
-                                            fontSize: 12),
-                                    textAlign: TextAlign.center,
-                                  )),
-                                  decoration: status[index].isAllowed == null
-                                      ? BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          color:
-                                              status[index].isCurrentStatus ==
-                                                      null
-                                                  ? MyColors.lightGrey
-                                                  : MyColors.primaryColor,
-                                        )
-                                      : status[index].isSelected == null
+                                                fontSize: 12)
+                                            : TextStyle(
+                                                fontFamily: "Roboto",
+                                                fontWeight: FontWeight.w500,
+                                                color: MyColors.white,
+                                                fontSize: 12),
+                                        textAlign: TextAlign.center,
+                                      )),
+                                      decoration: status[index].isAllowed ==
+                                              null
                                           ? BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                               color: status[index]
                                                           .isCurrentStatus ==
                                                       null
-                                                  ? MyColors.darkBorder
+                                                  ? MyColors.lightGrey
                                                   : MyColors.primaryColor,
                                             )
-                                          : BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: MyColors.lightSky,
-                                            ),
+                                          : status[index].isSelected == null
+                                              ? BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: status[index]
+                                                              .isCurrentStatus ==
+                                                          null
+                                                      ? MyColors.darkBorder
+                                                      : MyColors.primaryColor,
+                                                )
+                                              : BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: MyColors.lightSky,
+                                                ),
+                                    ),
+                                  );
+                                }),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            color: MyColors.statusDivider,
+                            height: 1,
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(18, 16, 0, 16),
+                                  child: Text(
+                                    "Hub",
+                                    style: TextStyle(
+                                        fontFamily: "Roboto",
+                                        fontWeight: FontWeight.w500,
+                                        color: MyColors.ligtBlack,
+                                        fontSize: 14),
+                                    textAlign: TextAlign.left,
+                                  ),
                                 ),
-                              );
-                            }),
-                      ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                        color: MyColors.statusDivider,
-                        height: 1,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.fromLTRB(18, 16, 0, 16),
-                              child: Text(
-                                "Hub",
-                                style: TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontWeight: FontWeight.w500,
-                                    color: MyColors.ligtBlack,
-                                    fontSize: 14),
-                                textAlign: TextAlign.left,
-                              ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(18, 16, 18, 16),
+                                  child: Text(
+                                    (dropdownValue != null &&
+                                            dropdownValue.name != null)
+                                        ? dropdownValue.name
+                                        : "",
+                                    style: TextStyle(
+                                        fontFamily: "Roboto",
+                                        fontWeight: FontWeight.w500,
+                                        color: MyColors.ligtBlack,
+                                        fontSize: 14),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Container(
-                              padding: EdgeInsets.fromLTRB(18, 16, 18, 16),
-                              child: Text(
-                                (dropdownValue != null &&
-                                        dropdownValue.name != null)
-                                    ? dropdownValue.name
-                                    : "",
-                                style: TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontWeight: FontWeight.w500,
-                                    color: MyColors.ligtBlack,
-                                    fontSize: 14),
-                                textAlign: TextAlign.left,
-                              ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            color: MyColors.statusDivider,
+                            height: 2,
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(18, 20, 0, 11),
+                                  child: Text(
+                                    "Remarks",
+                                    style: TextStyle(
+                                        fontFamily: "Roboto",
+                                        fontWeight: FontWeight.w500,
+                                        color: MyColors.ligtBlack,
+                                        fontSize: 14),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isRemarksVisible = !isRemarksVisible;
+                                    });
+                                  },
+                                  child: Container(
+                                    padding:
+                                        EdgeInsets.fromLTRB(15, 20, 18, 18),
+                                    child: new SizedBox(
+                                      height: 40,
+                                      child:
+                                          Image.asset("assets/images/plus.png"),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            // Container(
-                            //   margin: EdgeInsets.fromLTRB(15, 14, 14, 11),
-                            //   child: DropdownButton<HubM>(
-                            //       hint: Text("Select hub"),
-                            //       value: dropdownValue,
-                            //       icon: Icon(Icons.arrow_drop_down),
-                            //       iconSize: 24,
-                            //       elevation: 16,
-                            //       style: TextStyle(
-                            //           fontFamily: "Roboto",
-                            //           fontWeight: FontWeight.w500,
-                            //           color: MyColors.ligtBlack,
-                            //           fontSize: 14),
-                            //       underline: Container(
-                            //         height: 2,
-                            //         color: Colors.white,
-                            //       ),
-                            //       onChanged: (HubM newValue) {
-                            //         setState(() {
-                            //           dropdownValue = newValue;
-                            //           isHubSelected = true;
-                            //         });
-                            //       },
-                            //       items: this.hub?.map<DropdownMenuItem<HubM>>(
-                            //               (HubM value) {
-                            //             return DropdownMenuItem<HubM>(
-                            //               value: value,
-                            //               child: Text(value.name),
-                            //             );
-                            //           })?.toList()),
-                            // ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                        color: MyColors.statusDivider,
-                        height: 2,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.fromLTRB(18, 20, 0, 11),
-                              child: Text(
-                                "Remarks",
-                                style: TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontWeight: FontWeight.w500,
-                                    color: MyColors.ligtBlack,
-                                    fontSize: 14),
-                                textAlign: TextAlign.left,
+                          ),
+                          isRemarksVisible
+                              ? editRemarks
+                              : Container(
+                                  color: MyColors.white,
+                                  height: 1,
+                                ),
+                          Container(
+                            width: 100,
+                            height: 32,
+                            margin: EdgeInsets.fromLTRB(18, 0, 0, 11),
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                backgroundColor: MyColors.primaryColor,
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isRemarksVisible = !isRemarksVisible;
-                                });
+                              onPressed: () {
+                                _showConfirmDialog();
                               },
-                              child: Container(
-                                padding: EdgeInsets.fromLTRB(15, 20, 18, 18),
-                                child: new SizedBox(
-                                  height: 40,
-                                  child: Image.asset("assets/images/plus.png"),
+                              child: Text(
+                                "Save",
+                                style: TextStyle(
+                                  color: MyColors.white,
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.0,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      isRemarksVisible
-                          ? editRemarks
-                          : Container(
-                              color: MyColors.white,
-                              height: 1,
-                            ),
-                      Container(
-                        width: 100,
-                        height: 32,
-                        margin: EdgeInsets.fromLTRB(18, 0, 0, 11),
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            backgroundColor: MyColors.primaryColor,
                           ),
-                          onPressed: () {
-                            _showConfirmDialog();
-                          },
-                          child: Text(
-                            "Save",
-                            style: TextStyle(
-                              color: MyColors.white,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.0,
+                          Container(
+                            color: MyColors.lightGrey,
+                            height: 7,
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(18, 24, 0, 11),
+                                  child: StaticTextOrangeSmall(
+                                      staticText: "SENDER DETAILS"),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-
-                        // FlatButton(
-                        //   shape: new RoundedRectangleBorder(
-                        //     borderRadius: new BorderRadius.circular(8.0),
-                        //   ),
-                        //   onPressed: () {
-                        //     _showConfirmDialog();
-                        //   },
-                        //   color: MyColors.primaryColor,
-                        //   child: Text(
-                        //     "Save",
-                        //     style: TextStyle(
-                        //       color: MyColors.white,
-                        //       fontFamily: 'Roboto',
-                        //       fontWeight: FontWeight.w500,
-                        //       fontSize: 14.0,
-                        //     ),
-                        //   ),
-                        // ),
-                      ),
-                      Container(
-                        color: MyColors.lightGrey,
-                        height: 7,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.fromLTRB(18, 24, 0, 11),
-                              child: StaticTextOrangeSmall(
-                                  staticText: "SENDER DETAILS"),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(18, 0, 0, 10),
+                            child: Text(
+                              (detail != null && detail.senderName != null)
+                                  ? detail.senderName
+                                  : "",
+                              style: TextStyle(
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w700,
+                                  color: MyColors.ligtBlack,
+                                  fontSize: 16),
+                              textAlign: TextAlign.left,
                             ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //   _navigateSenderAndSuccess(_ctx);
-                            //   },
-                            //
-                            //   child: _getStatusLogistic((detail !=null && detail.currentStatus!=null)  ? detail.currentStatus : "")=="forwardLogistic" ? Container(
-                            //     padding: EdgeInsets.fromLTRB(20, 24, 20, 20),
-                            //     child: detail.client=="no" ? new SizedBox(
-                            //       height: 18,
-                            //       child: Image.asset("assets/images/edit.png"),
-                            //     ):new SizedBox(
-                            //       height: 0,
-                            //     )
-                            //     ,
-                            //   ) :   Container(
-                            //     height: 0,
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(18, 0, 0, 10),
-                        child: Text(
-                          (detail != null && detail.senderName != null)
-                              ? detail.senderName
-                              : "",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w700,
-                              color: MyColors.ligtBlack,
-                              fontSize: 16),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(15, 0, 18, 14),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 18,
-                                width: 18,
-                                child: Image.asset("assets/images/path.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                          ),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(15, 0, 18, 14),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new SizedBox(
+                                    height: 18,
+                                    width: 18,
                                     child:
-                                        new TextGrey(text: "Pickup Location"),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null &&
-                                          detail.senderLocation != null)
-                                      ? detail.senderLocation
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      Container(
-                        
-                          padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 16,
-                                width: 16,
-                                child: Image.asset("assets/images/email.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: new TextGrey(text: "Email"),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null && detail.email != null)
-                                      ? detail.email
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 18,
-                                width: 14,
-                                child: Image.asset("assets/images/phone.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: new TextGrey(text: "Phone. No."),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null &&
-                                          detail.senderContact != null)
-                                      ? detail.senderContact
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(17, 0, 18, 25),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 18,
-                                width: 14,
-                                child: Image.asset("assets/images/path.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: new TextGrey(text: "Full Address"),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null &&
-                                          detail.senderGoogleAddress != null)
-                                      ? detail.senderGoogleAddress
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      Container(
-                        color: MyColors.lightGrey,
-                        height: 7,
-                      ),
-                      Container(
-                        color: MyColors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.fromLTRB(18, 26, 0, 11),
-                              child: StaticTextOrangeSmall(
-                                  staticText: "RECEIVER DETAILS"),
-                            ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //   _navigateReceiverAndSuccess(_ctx);
-                            //   },
-                            //   child:  _getStatusLogistic((detail !=null && detail.currentStatus!=null)  ? detail.currentStatus : "")=="forwardLogistic" ? Container(
-                            //     padding: EdgeInsets.fromLTRB(20, 24, 20, 20),
-                            //     child: new SizedBox(
-                            //       height: 18,
-                            //       child: Image.asset("assets/images/edit.png"),
-                            //     ),
-                            //   ) :  Container(
-                            //     height: 0,
-                            //   ),
-                            // )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(16, 0, 0, 10),
-                        child: Text(
-                          (detail != null && detail.receiverName != null)
-                              ? detail.receiverName
-                              : "",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w700,
-                              color: MyColors.ligtBlack,
-                              fontSize: 16),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(15, 0, 18, 0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 18,
-                                width: 18,
-                                child: Image.asset("assets/images/path.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: new TextGrey(text: "Drop Location"),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null &&
-                                          detail.receiverGoogleAddress != null)
-                                      ? detail.receiverGoogleAddress
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      ((detail != null && detail.client != null)
-                                  ? detail.client
-                                  : "") ==
-                              "no"
-                          ? Container(
-                              padding: EdgeInsets.fromLTRB(17, 14, 18, 0),
+                                        Image.asset("assets/images/path.png"),
+                                  ),
+                                  new SizedBox(
+                                      height: 18,
+                                      width: 160,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                        child: new TextGrey(
+                                            text: "Pickup Location"),
+                                      )),
+                                  new Flexible(
+                                    child: new TextDarkGrey(
+                                      text: (detail != null &&
+                                              detail.senderLocation != null)
+                                          ? detail.senderLocation
+                                          : "",
+                                    ),
+                                    flex: 1,
+                                  ),
+                                ],
+                              )),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -5521,199 +5260,610 @@ Scaffold(
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                        child: new TextGrey(text: "Landmark"),
+                                        child: new TextGrey(text: "Email"),
                                       )),
                                   new Flexible(
                                     child: new TextDarkGrey(
                                       text: (detail != null &&
-                                              detail.receiverNearestLandmark !=
-                                                  null)
-                                          ? detail.receiverNearestLandmark
+                                              detail.email != null)
+                                          ? detail.email
                                           : "",
                                     ),
                                     flex: 1,
                                   ),
                                 ],
-                              ))
-                          : Container(
-                              height: 0,
-                            ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(17, 14, 18, 25),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new SizedBox(
-                                height: 18,
-                                width: 14,
-                                child: Image.asset("assets/images/phone.png"),
-                              ),
-                              new SizedBox(
-                                  height: 18,
-                                  width: 160,
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: new TextGrey(text: "Phone. No."),
-                                  )),
-                              new Flexible(
-                                child: new TextDarkGrey(
-                                  text: (detail != null &&
-                                          detail.receiverContact != null)
-                                      ? detail.receiverContact
-                                      : "",
-                                ),
-                                flex: 1,
-                              ),
-                            ],
-                          )),
-                      Container(
-                        color: MyColors.lightGrey,
-                        height: 7,
-                      ),
-                      ((detail != null && detail.client != null)
-                                  ? detail.client
-                                  : "") ==
-                              "yes"
-                          ? Container(
-                              color: MyColors.white,
+                              )),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(17, 0, 18, 14),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(18, 16, 0, 11),
-                                    child: StaticTextOrangeSmall(
-                                        staticText: "PACKAGE DETAILS"),
+                                  new SizedBox(
+                                    height: 18,
+                                    width: 14,
+                                    child:
+                                        Image.asset("assets/images/phone.png"),
                                   ),
-                                  // GestureDetector(
-                                  //     onTap: () {
-                                  //    _navigatePackageAndSuccess(_ctx);
-                                  //     },
-                                  //   child: (_getStatusLogistic((detail !=null && detail.currentStatus!=null)  ? detail.currentStatus : "")=="orderPlaced" || _getStatusLogistic((detail !=null && detail.currentStatus!=null)  ? detail.currentStatus : "")=="orderConfirmed")  ?
-                                  //   Container(
-                                  //     padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-                                  //     child: new SizedBox(
-                                  //       height: 18,
-                                  //       child: Image.asset("assets/images/edit.png"),
-                                  //     ),
-                                  //   ) :  Container(
-                                  //     color: MyColors.lightGrey,
-                                  //     height: 0,
-                                  //   ),
-                                  // ),
+                                  new SizedBox(
+                                      height: 18,
+                                      width: 160,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                        child: new TextGrey(text: "Phone. No."),
+                                      )),
+                                  new Flexible(
+                                    child: new TextDarkGrey(
+                                      text: (detail != null &&
+                                              detail.senderContact != null)
+                                          ? detail.senderContact
+                                          : "",
+                                    ),
+                                    flex: 1,
+                                  ),
                                 ],
-                              ),
-                            )
-                          : Container(
-                              color: MyColors.lightGrey,
-                              height: 0,
-                            ),
-                      ((detail != null && detail.client != null)
-                                  ? detail.client
-                                  : "") ==
-                              "yes"
-                          ? Container(
-                              margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
-                              child: Column(
+                              )),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(17, 0, 18, 25),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(0, 12, 0, 12),
-                                      child: Text(
-                                          "Product Name : ${detail.productName}",
-                                          style: TextStyle(
-                                              fontFamily: "Roboto",
-                                              fontWeight: FontWeight.w500,
-                                              color: MyColors.darkGreyText,
-                                              fontSize: 14))),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(14, 0, 14, 0),
-                                    color: MyColors.darkBorder,
-                                    height: 1,
+                                  new SizedBox(
+                                    height: 18,
+                                    width: 14,
+                                    child:
+                                        Image.asset("assets/images/path.png"),
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                  new SizedBox(
+                                      height: 18,
+                                      width: 160,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                        child:
+                                            new TextGrey(text: "Full Address"),
+                                      )),
+                                  new Flexible(
+                                    child: new TextDarkGrey(
+                                      text: (detail != null &&
+                                              detail.senderGoogleAddress !=
+                                                  null)
+                                          ? detail.senderGoogleAddress
+                                          : "",
+                                    ),
+                                    flex: 1,
+                                  ),
+                                ],
+                              )),
+                          Container(
+                            color: MyColors.lightGrey,
+                            height: 7,
+                          ),
+                          Container(
+                            color: MyColors.white,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(18, 26, 0, 11),
+                                  child: StaticTextOrangeSmall(
+                                      staticText: "RECEIVER DETAILS"),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(16, 0, 0, 10),
+                            child: Text(
+                              (detail != null && detail.receiverName != null)
+                                  ? detail.receiverName
+                                  : "",
+                              style: TextStyle(
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w700,
+                                  color: MyColors.ligtBlack,
+                                  fontSize: 16),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(15, 0, 18, 0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new SizedBox(
+                                    height: 18,
+                                    width: 18,
+                                    child:
+                                        Image.asset("assets/images/path.png"),
+                                  ),
+                                  new SizedBox(
+                                      height: 18,
+                                      width: 160,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                        child:
+                                            new TextGrey(text: "Drop Location"),
+                                      )),
+                                  new Flexible(
+                                    child: new TextDarkGrey(
+                                      text: (detail != null &&
+                                              detail.receiverGoogleAddress !=
+                                                  null)
+                                          ? detail.receiverGoogleAddress
+                                          : "",
+                                    ),
+                                    flex: 1,
+                                  ),
+                                ],
+                              )),
+                          ((detail != null && detail.client != null)
+                                      ? detail.client
+                                      : "") ==
+                                  "no"
+                              ? Container(
+                                  padding: EdgeInsets.fromLTRB(17, 14, 18, 0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
-                                 Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-    Container(
-      margin: EdgeInsets.fromLTRB(16, 12, 0, 4),
-      child: TextGrey(text: "Weight"),
-    ),
-
-    if (newweightobj.newweight1 != "")
-      Container(
-        margin: EdgeInsets.fromLTRB(15, 0, 0, 14),
-        child: Text(
-          "${newweightobj.newweight1}kg",
-          style: TextStyle(
-            fontFamily: "Roboto",
-            fontWeight: FontWeight.w500,
-            color: MyColors.darkGreyText,
-            fontSize: 20,
-          ),
-        ),
-      )
-    else
-      Container(
-        margin: EdgeInsets.fromLTRB(15, 0, 0, 14),
-        child: Text(
-          "${detail.finalPackageWeight}kg",
-          style: TextStyle(
-            fontFamily: "Roboto",
-            fontWeight: FontWeight.w500,
-            color: MyColors.darkGreyText,
-            fontSize: 20,
-          ),
-        ),
-      ),
-  ],
-),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Container(
+                                      new SizedBox(
+                                        height: 16,
+                                        width: 16,
+                                        child: Image.asset(
+                                            "assets/images/email.png"),
+                                      ),
+                                      new SizedBox(
+                                          height: 18,
+                                          width: 160,
+                                          child: Padding(
                                             padding: EdgeInsets.fromLTRB(
-                                                2, 12, 0, 4),
-                                            child: TextGrey(text: "Price"),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.fromLTRB(
-                                                0, 0, 0, 14),
-                                            child: Text(
-                                                "Rs ${detail.productPrice}",
-                                                textAlign: TextAlign.left,
-                                                style: TextStyle(
-                                                    fontFamily: "Roboto",
-                                                    fontWeight: FontWeight.w500,
-                                                    color:
-                                                        MyColors.darkGreyText,
-                                                    fontSize: 20)),
-                                          ),
-                                        ],
+                                                18, 0, 0, 0),
+                                            child:
+                                                new TextGrey(text: "Landmark"),
+                                          )),
+                                      new Flexible(
+                                        child: new TextDarkGrey(
+                                          text: (detail != null &&
+                                                  detail.receiverNearestLandmark !=
+                                                      null)
+                                              ? detail.receiverNearestLandmark
+                                              : "",
+                                        ),
+                                        flex: 1,
+                                      ),
+                                    ],
+                                  ))
+                              : Container(
+                                  height: 0,
+                                ),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(17, 14, 18, 25),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  new SizedBox(
+                                    height: 18,
+                                    width: 14,
+                                    child:
+                                        Image.asset("assets/images/phone.png"),
+                                  ),
+                                  new SizedBox(
+                                      height: 18,
+                                      width: 160,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                        child: new TextGrey(text: "Phone. No."),
+                                      )),
+                                  new Flexible(
+                                    child: new TextDarkGrey(
+                                      text: (detail != null &&
+                                              detail.receiverContact != null)
+                                          ? detail.receiverContact
+                                          : "",
+                                    ),
+                                    flex: 1,
+                                  ),
+                                ],
+                              )),
+                          Container(
+                            color: MyColors.lightGrey,
+                            height: 7,
+                          ),
+                          ((detail != null && detail.client != null)
+                                      ? detail.client
+                                      : "") ==
+                                  "yes"
+                              ? Container(
+                                  color: MyColors.white,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(18, 16, 0, 11),
+                                        child: StaticTextOrangeSmall(
+                                            staticText: "PACKAGE DETAILS"),
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: MyColors.lightGrey,
-                              ),
-                            )
-                          : Container(
-                              color: MyColors.lightGrey,
-                              height: 0,
-                            ),
-                    ],
-                  ),
-                )),
-        bottomNavigationBar: trackNextBtn)
+                                )
+                              :
+                              
+                              
+                              
+                              
+                              
+                              
+                          //      Container(
+                          //         color: MyColors.lightGrey,
+                          //         height: 0,
+                          //       ),
+                          // ((detail != null && detail.client != null)
+                          //             ? detail.client
+                          //             : "") ==
+                          //         "yes"
+                          //     ? Container(
+                          //         margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
+                          //         child: Column(
+                          //           children: <Widget>[
+                          //             Padding(
+                          //                 padding:
+                          //                     EdgeInsets.fromLTRB(0, 12, 0, 12),
+                          //                 child: Text(
+                          //                     "Product Name : ${detail.productName}",
+                          //                     style: TextStyle(
+                          //                         fontFamily: "Roboto",
+                          //                         fontWeight: FontWeight.w500,
+                          //                         color: MyColors.darkGreyText,
+                          //                         fontSize: 14))),
+                          //             Container(
+                          //               margin:
+                          //                   EdgeInsets.fromLTRB(14, 0, 14, 0),
+                          //               color: MyColors.darkBorder,
+                          //               height: 1,
+                          //             ),
+                          //             Row(
+                          //               mainAxisAlignment:
+                          //                   MainAxisAlignment.spaceEvenly,
+                          //               children: <Widget>[
+                          //                 Column(
+                          //                   crossAxisAlignment:
+                          //                       CrossAxisAlignment.start,
+                          //                   children: <Widget>[
+                          //                     Container(
+                          //                       margin: EdgeInsets.fromLTRB(
+                          //                           16, 12, 0, 4),
+                          //                       child: TextGrey(text: "Weight"),
+                          //                     ),
+                          //                     if (newweightobj.newweight1 != "")
+                          //                       Container(
+                          //                         margin: EdgeInsets.fromLTRB(
+                          //                             15, 0, 0, 14),
+                          //                         child: Text(
+                          //                           "${newweightobj.newweight1}kg",
+                          //                           style: TextStyle(
+                          //                             fontFamily: "Roboto",
+                          //                             fontWeight:
+                          //                                 FontWeight.w500,
+                          //                             color:
+                          //                                 MyColors.darkGreyText,
+                          //                             fontSize: 20,
+                          //                           ),
+                          //                         ),
+                          //                       )
+                          //                     else
+                          //                       Container(
+                          //                         margin: EdgeInsets.fromLTRB(
+                          //                             15, 0, 0, 14),
+                          //                         child: Text(
+                          //                           "${detail.finalPackageWeight}kg",
+                          //                           style: TextStyle(
+                          //                             fontFamily: "Roboto",
+                          //                             fontWeight:
+                          //                                 FontWeight.w500,
+                          //                             color:
+                          //                                 MyColors.darkGreyText,
+                          //                             fontSize: 20,
+                          //                           ),
+                          //                         ),
+                          //                       ),
+                          //                   ],
+                          //                 ),
+                          //                 Column(
+                          //                   crossAxisAlignment:
+                          //                       CrossAxisAlignment.start,
+                          //                   children: <Widget>[
+                          //                     Container(
+                          //                       padding: EdgeInsets.fromLTRB(
+                          //                           2, 12, 0, 4),
+                          //                       child: TextGrey(text: "Price"),
+                          //                     ),
+                          //                     Container(
+                          //                       padding: EdgeInsets.fromLTRB(
+                          //                           0, 0, 0, 14),
+                          //                       child: Text(
+                          //                           "Rs ${detail.productPrice}",
+                          //                           textAlign: TextAlign.left,
+                          //                           style: TextStyle(
+                          //                               fontFamily: "Roboto",
+                          //                               fontWeight:
+                          //                                   FontWeight.w500,
+                          //                               color: MyColors
+                          //                                   .darkGreyText,
+                          //                               fontSize: 20)),
+                          //                     ),
 
-    );
+                          //                   ],
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ],
+                          //         ),
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(10),
+                          //           color: MyColors.lightGrey,
+                          //         ),
+                          //       )
+                          //     : Container(
+                          //         color: MyColors.lightGrey,
+                          //         height: 0,
+                          //       ),
+
+
+
+
+
+
+
+
+Container(
+  color: MyColors.lightGrey,
+  height: 0,
+),
+((detail != null && detail.client != null) ? detail.client : "") == "yes"
+    ? Container(
+        margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+              child: Text(
+                "Product Name : ${detail.productName}",
+                style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontWeight: FontWeight.w500,
+                  color: MyColors.darkGreyText,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(14, 0, 14, 0),
+              color: MyColors.darkBorder,
+              height: 1,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.fromLTRB(16, 12, 0, 4),
+                      child: TextGrey(text: "Weight"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(15, 0, 0, 14),
+                      child: Text(
+                        "${newweightobj.newweight1 != "" ? newweightobj.newweight1 : detail.finalPackageWeight}kg",
+                        style: TextStyle(
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w500,
+                          color: MyColors.darkGreyText,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(2, 12, 0, 4),
+                      child: TextGrey(text: "Price"),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 14),
+                      child: Text(
+                        "Rs ${detail.productPrice}",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.w500,
+                          color: MyColors.darkGreyText,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 14),
+              color: MyColors.darkBorder,
+              height: 1,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Payment Methods",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w600,
+                      color: MyColors.darkGreyText,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Column(
+                    children: [
+  // {'name': 'Khalti', 'amount': "200"},
+  // {'name': 'Esewa', 'amount': "100"},
+  {'name': 'Cash', 'amount': "150"},
+  {'name': 'Paid to Client', 'amount': "300"},
+  // {'name': 'Phone Pay', 'amount': "100"},
+].map<Widget>((method) {
+  return Padding(
+    padding: EdgeInsets.only(top: 8),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+          method['name'],
+          style: TextStyle(
+            fontFamily: "Roboto",
+            fontWeight: FontWeight.w500,
+            color: MyColors.darkGreyText,
+            fontSize: 14,
+          ),
+        ),
+        Text(
+          "Rs 200",
+          style: TextStyle(
+            fontFamily: "Roboto",
+            fontWeight: FontWeight.w500,
+            color: MyColors.darkGreyText,
+            fontSize: 14,
+          ),
+        ),
+      ],
+    ),
+  );
+}).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: MyColors.lightGrey,
+        ),
+      )
+    : Container(
+        color: MyColors.lightGrey,
+        height: 0,
+      ),
+
+
+
+
+
+
+
+
+//new section for reschedule and cancel and payment method
+   Container(
+  color: MyColors.lightGrey,
+  height: 7,
+),
+Container(
+  color: MyColors.white,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Container(
+        padding: EdgeInsets.fromLTRB(18, 26, 0, 11),
+        child: StaticTextOrangeSmall(
+          staticText: "Additional Details",
+        ),
+      ),
+    ],
+  ),
+),
+
+        Container(
+    
+      padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+    
+      child: Text(
+    
+        "Rescheduled Reason:",
+    
+        style: TextStyle(
+    
+          fontFamily: "Roboto",
+    
+          fontWeight: FontWeight.w700,
+    
+          color: MyColors.ligtBlack,
+    
+          fontSize: 14,
+    
+        ),
+    
+        textAlign: TextAlign.left,
+    
+      ),
+    
+    ),
+    
+   RescheduleGrid(),
+  
+
+
+        Container(
+    
+      padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+    
+      child: Text(
+    
+        "Canceled Reason:",
+    
+        style: TextStyle(
+    
+          fontFamily: "Roboto",
+    
+          fontWeight: FontWeight.w700,
+    
+          color: MyColors.ligtBlack,
+    
+          fontSize: 14,
+    
+        ),
+    
+        textAlign: TextAlign.left,
+    
+      ),
+    
+    ),
+    
+CanceledReasonTable(),
+
+
+// her additional Details section finish
+
+
+
+
+
+
+
+
+
+                        ],
+                      ),
+                    )),
+            bottomNavigationBar: trackNextBtn));
   }
 
   @override

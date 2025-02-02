@@ -35,4 +35,5 @@ class MyColors {
   static const Color primary20 = Color(0x1C1C1C29);
   static const Color lightSky = Color(0xFF1FC4E6);
   static const Color green = Color(0xFF44C892);
+static const  Color myColorCode = Color.fromARGB(255, 69, 69, 69);
 }

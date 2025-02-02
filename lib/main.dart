@@ -39,8 +39,7 @@ class SplashPage extends StatefulWidget {
 
 
 class _SplashPage  extends State<SplashPage> implements SplashContract{
-
-
+final ValueNotifier<int> unseenCountNotifier = ValueNotifier<int>(0);
   BuildContext _ctx;
   SplashPresenter _presenter;
   final scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -86,9 +85,7 @@ class _SplashPage  extends State<SplashPage> implements SplashContract{
       if(status == true){
         Navigator.pushAndRemoveUntil(
           context,
-          // MaterialPageRoute(builder: (context) => QRViewExample()),
-           MaterialPageRoute(builder: (context) => UserMain()),
-          // MaterialPageRoute(builder: (context) => LoginScreen()),
+          MaterialPageRoute(builder: (context) => UserMain(unseenCountNotifier: unseenCountNotifier)),
               (Route<dynamic> route) => false,
         );
       }

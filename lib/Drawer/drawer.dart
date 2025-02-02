@@ -2,7 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:logistics/Drawer/bulkDispatchList.dart';
+import 'package:logistics/Drawer/bulkScanner.dart';
 import 'package:logistics/Drawer/contactDetails.dart';
+import 'package:logistics/Drawer/expenses.dart';
+import 'package:logistics/Drawer/orderHistory.dart';
 import 'package:logistics/Drawer/privacyPolicy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -90,6 +94,8 @@ Future<void> _fetchAndCacheRiderDetails() async {
     prefs.setString('token', "");
 
     await prefs.remove('cachedDeliveryList'); // Clear delivery cache
+    await prefs.remove('cachedOutFordelivery');
+    await prefs.remove('cacheddelivered'); // Clear delivery cache
     print("User logged out. Cache cleared.");
     // Navigate to login screen
   }
@@ -146,6 +152,51 @@ Future<void> _fetchAndCacheRiderDetails() async {
                       MaterialPageRoute(
                           builder: (context) => RiderDetailsScreen()),
                     );
+                  },
+                ),
+                   ListTile(
+                  leading: Icon(Icons.list_alt),
+                  title: Text('Bulk Scanner'),
+                  onTap: () {
+                    // Navigate to About Us screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => QRViewExampleBulk()),
+                    );
+                  },
+                ),
+                     ListTile(
+                  leading: Icon(Icons.list_alt),
+                  title: Text('Order History'),
+                  onTap: () {
+                    // Navigate to About Us screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => OrderHistoryScreen()),
+                    );
+                  },
+                ),
+                   ListTile(
+                  leading: Icon(Icons.list_alt),
+                  title: Text('Bulk Dispatch List'),
+                  onTap: () {
+                    // Navigate to About Us screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BulkDispatchListScreen()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.payment),
+                  title: Text('Expenses'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ExpensesScreen()),
+                    );
+                    // Navigate to Notification screen
                   },
                 ),
                 ListTile(
