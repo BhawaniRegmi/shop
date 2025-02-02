@@ -85,7 +85,7 @@ final ValueNotifier<int> unseenCountNotifier = ValueNotifier<int>(0);
       if(status == true){
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => UserMain(unseenCountNotifier: unseenCountNotifier)),
+          MaterialPageRoute(builder: (context) => UserMain()),
               (Route<dynamic> route) => false,
         );
       }
